@@ -12,7 +12,28 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-require('packer').startup(function(use)
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+	return
+end
+
+-- autocommand to runn packer when this file is saved
+vim.cmd [[ 
+	augroup packer_user_config
+		autocmd!
+		autocmd BufWritePost packer.lua source <afile> | PackerSync
+	augroup end
+]]
+
+packer.init {
+	display = {
+		open_fn = function()
+			return require("packer.util").float { border = "rounded" }
+		end,
+	}
+}
+
+packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
@@ -90,6 +111,4 @@ require('packer').startup(function(use)
 		require("packer").sync()
 		return
 	end
-
 end)
-
