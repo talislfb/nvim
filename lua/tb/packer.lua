@@ -74,8 +74,9 @@ packer.startup(function(use)
 	use 'tpope/vim-fugitive'
 
 	use { -- LSP Configuration & Plugins
-		'neovim/nvim-lspconfig',
+		'VonHeikemen/lsp-zero.nvim',
 		requires = {
+			'neovim/nvim-lspconfig',
 			-- Automatically install LSPs to stdpath for neovim
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
@@ -97,13 +98,10 @@ packer.startup(function(use)
 			'hrsh7th/cmp-path',
 			'L3MON4D3/LuaSnip',
 			'saadparwaiz1/cmp_luasnip',
+			-- snippets
 			'L3MON4D3/LuaSnip',
 			'rafamadriz/friendly-snippets'
 		},
-	}
-
-	use {
-		'VonHeikemen/lsp-zero.nvim'
 	}
 
 	-- the first run will install packer and our plugins
