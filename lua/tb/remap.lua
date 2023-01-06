@@ -20,7 +20,7 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
-vim.keymap.set("n", "<leader>e", ":Lex 30<CR>")
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- append lines without changing cursor position
 vim.keymap.set("n", "J", "mzJ`z")
@@ -34,7 +34,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- paste over highlighted word, without losing buffer
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "p", '"_dP')
 
 -- copy into the system buffer
 vim.keymap.set("n", "<leader>y", "\"+y")

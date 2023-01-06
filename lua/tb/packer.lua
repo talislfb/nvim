@@ -36,6 +36,8 @@ packer.init {
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'windwp/nvim-autopairs'
+	use 'lewis6991/gitsigns.nvim'
+	use 'akinsho/toggleterm.nvim'
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -45,6 +47,8 @@ packer.startup(function(use)
 	-- colorscheme
 	use { 'catppuccin/nvim', as = 'catppuccin' }
 
+	use 'nvim-tree/nvim-tree.lua'
+	use 'akinsho/bufferline.nvim'
 	use { 
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -89,6 +93,7 @@ packer.startup(function(use)
 			'folke/neodev.nvim',
 		},
 	}
+	use 'jose-elias-alvarez/null-ls.nvim'
 
 	use { -- Autocompletion
 		'hrsh7th/nvim-cmp',
