@@ -9,11 +9,33 @@ lsp.ensure_installed({
 })
 
 lsp.set_preferences({
-	sign_icons = { }
+	sign_icons = {
+		error = "",
+		warn = "",
+		hint = "",
+		info = ""
+	}
 })
 
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
+vim.diagnostic.config({
+	float = {
+			focusable = true,
+			style = "minimal",
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+})
+
+-- configure an individual server
+lsp.configure('tsserver', {
+  flags = {
+    debounce_text_changes = 150,
+  },
+  on_attach = function(client, bufnr)
+    print('hello tsserver')
+  end
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -38,14 +60,12 @@ lsp.on_attach(function(client, bufnr)
 	nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 	nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 	nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-	nmap('gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>')
+	nmap('gl', '<cmd>lua vim.diagnostic.open_float()<CR>')
 
-	-- See `:help K` for why this keymap
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-	--nmap('<C-h>', vim.lsp.buf.signature_help, 'Signature Documentation')
+	nmap('gp', vim.lsp.buf.signature_help, 'Signature Documentation')
 
 	vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-	vim.keymap.set('n', '<leader>vd', function() vim.lsp.buf.open_float() end, opts)
 	vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
 
 end)

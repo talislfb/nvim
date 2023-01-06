@@ -1,3 +1,6 @@
+vim.opt.title = true
+vim.opt.titlestring = "%<%F"
+
 -- general configurations
 vim.opt.nu = true -- show numbers
 vim.opt.relativenumber = true
@@ -12,6 +15,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false -- tabs instead of spaces
 vim.opt.smartindent = true
+vim.opt.listchars = "tab:│ ,trail:·,nbsp:+"
 
 -- backup and undo configurations
 -- instead of UserProfile, use HOME for linux systems

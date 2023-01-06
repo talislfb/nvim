@@ -1,6 +1,15 @@
-require'nvim-treesitter.configs'.setup {
+local status_ok, configs = pcall(require, 'nvim-treesitter.configs')
+if not status_ok then
+	return
+end
+
+configs.setup {
 	-- A list of parser names, or "all"
 	ensure_installed = { "help", "python", "c", "cpp", "lua", "rust" },
+
+	autopairs = {
+		enable = true,
+	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -12,7 +21,7 @@ require'nvim-treesitter.configs'.setup {
 	-- List of parsers to ignore installing (for "all")
 	ignore_install = { "javascript" },
 
-	indent = { enable = true, disable = { 'python' } },
+	indent = { enable = true, disable = { 'yaml' } },
 
 	highlight = {
 		-- `false` will disable the whole extension
