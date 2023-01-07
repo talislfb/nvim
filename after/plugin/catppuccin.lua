@@ -11,7 +11,7 @@ catppuccin.setup({
 		cmp = true,
 		telescope = true,
 		gitsigns = true,
-		bufferline = true
+		bufferline = true,
 	}
 })
 

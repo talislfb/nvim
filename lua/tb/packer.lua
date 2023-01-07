@@ -14,6 +14,7 @@ local packer_bootstrap = ensure_packer()
 
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
+	vim.notify("Couldn't find packer plugin!")
 	return
 end
 
@@ -34,10 +35,23 @@ packer.init {
 }
 
 packer.startup(function(use)
+	-- Utilities
 	use 'wbthomason/packer.nvim'
 	use 'windwp/nvim-autopairs'
-	use 'lewis6991/gitsigns.nvim'
 	use 'akinsho/toggleterm.nvim'
+	use 'nvim-tree/nvim-tree.lua'
+	use 'ap/vim-css-color'
+
+	-- Visual
+	use 'akinsho/bufferline.nvim'
+	use { 
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	} -- Statusline
+
+	-- Git
+	use 'lewis6991/gitsigns.nvim'
+	use 'tpope/vim-fugitive'
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -47,12 +61,6 @@ packer.startup(function(use)
 	-- colorscheme
 	use { 'catppuccin/nvim', as = 'catppuccin' }
 
-	use 'nvim-tree/nvim-tree.lua'
-	use 'akinsho/bufferline.nvim'
-	use { 
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	} -- Statusline
 
 	use { -- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
@@ -65,7 +73,6 @@ packer.startup(function(use)
 		'nvim-treesitter/nvim-treesitter-textobjects',
 		after = 'nvim-treesitter',
 	}
-
 	-- be able to see treesitter parsing info
 	use 'nvim-treesitter/playground'
 
@@ -75,13 +82,9 @@ packer.startup(function(use)
 	-- add files bookmarks and quick switch keymaps
 	use 'theprimeagen/harpoon'
 
-	-- for git commands
-	use 'tpope/vim-fugitive'
-
 	use { -- LSP Configuration & Plugins
-		'VonHeikemen/lsp-zero.nvim',
+		'neovim/nvim-lspconfig',
 		requires = {
-			'neovim/nvim-lspconfig',
 			-- Automatically install LSPs to stdpath for neovim
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
@@ -91,9 +94,9 @@ packer.startup(function(use)
 
 			-- Additional lua configuration, makes nvim stuff amazing
 			'folke/neodev.nvim',
+			'jose-elias-alvarez/null-ls.nvim'
 		},
 	}
-	use 'jose-elias-alvarez/null-ls.nvim'
 
 	use { -- Autocompletion
 		'hrsh7th/nvim-cmp',
