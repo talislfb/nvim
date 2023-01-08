@@ -41,13 +41,20 @@ packer.startup(function(use)
 	use 'akinsho/toggleterm.nvim'
 	use 'nvim-tree/nvim-tree.lua'
 	use 'ap/vim-css-color'
+	use 'mbbill/undotree' -- file change history, like git branches
+
+	-- add files bookmarks and quick switch keymaps
+	use 'theprimeagen/harpoon'
 
 	-- Visual
 	use 'akinsho/bufferline.nvim'
-	use { 
+	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	} -- Statusline
+
+	-- colorscheme
+	use { 'catppuccin/nvim', as = 'catppuccin' }
 
 	-- Git
 	use 'lewis6991/gitsigns.nvim'
@@ -57,10 +64,6 @@ packer.startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-
-	-- colorscheme
-	use { 'catppuccin/nvim', as = 'catppuccin' }
-
 
 	use { -- Highlight, edit, and navigate code
 		'nvim-treesitter/nvim-treesitter',
@@ -76,11 +79,6 @@ packer.startup(function(use)
 	-- be able to see treesitter parsing info
 	use 'nvim-treesitter/playground'
 
-	-- file change history, like git branches
-	use 'mbbill/undotree'
-
-	-- add files bookmarks and quick switch keymaps
-	use 'theprimeagen/harpoon'
 
 	use { -- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
@@ -98,6 +96,17 @@ packer.startup(function(use)
 		},
 	}
 
+	-- debugging
+	use {
+		'mfussenegger/nvim-dap',
+		requires = {
+			'rcarriga/nvim-dap-ui',
+			'theHamsta/nvim-dap-virtual-text',
+			'nvim-telescope/telescope-dap.nvim',
+			'mfussenegger/nvim-dap-python'
+		}
+	}
+
 	use { -- Autocompletion
 		'hrsh7th/nvim-cmp',
 		requires = {
@@ -105,10 +114,9 @@ packer.startup(function(use)
 			'hrsh7th/cmp-nvim-lua',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip',
 			-- snippets
 			'L3MON4D3/LuaSnip',
+			'saadparwaiz1/cmp_luasnip',
 			'rafamadriz/friendly-snippets'
 		},
 	}
