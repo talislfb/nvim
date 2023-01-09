@@ -48,10 +48,8 @@ packer.startup(function(use)
 
 	-- Visual
 	use 'akinsho/bufferline.nvim'
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	} -- Statusline
+	use 'kyazdani42/nvim-web-devicons'
+	use 'nvim-lualine/lualine.nvim'
 
 	-- colorscheme
 	use { 'catppuccin/nvim', as = 'catppuccin' }
@@ -79,6 +77,7 @@ packer.startup(function(use)
 	-- be able to see treesitter parsing info
 	use 'nvim-treesitter/playground'
 
+	use 'simrat39/rust-tools.nvim'
 
 	use { -- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
