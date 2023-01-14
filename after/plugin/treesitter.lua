@@ -5,7 +5,7 @@ end
 
 configs.setup {
 	-- A list of parser names, or "all"
-	ensure_installed = { "help", "python", "c", "cpp", "lua", "rust" },
+	ensure_installed = { "help", "python", "c", "cpp", "lua", "rust", "toml" },
 
 	autopairs = {
 		enable = true,
