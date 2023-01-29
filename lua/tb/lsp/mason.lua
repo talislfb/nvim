@@ -57,6 +57,9 @@ for _, server in pairs(servers) do
 			server = {
 				on_attach = require("tb.lsp.handlers").on_attach,
 				capabilities = require("tb.lsp.handlers").capabilities,
+				cmd = {
+					"rustup", "run", "stable", "rust-analyzer"
+				},
 				settings = {
 					["rust-analyzer"] = {
 						lens = {

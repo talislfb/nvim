@@ -28,6 +28,7 @@ vim.opt.backup = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.smartcase = true
+vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true

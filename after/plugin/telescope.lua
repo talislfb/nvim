@@ -77,6 +77,7 @@ local builtin = require('telescope.builtin')
 
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<C-f>', '<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>')
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
 vim.keymap.set('n', '<leader>fgf', builtin.git_files, { desc = '[F]ind [G]it Files' })
@@ -86,4 +87,5 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep'
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 -- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+pcall(telescope.load_extension, 'fzf')
+pcall(telescope.load_extension, 'file_browser')

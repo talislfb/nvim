@@ -42,7 +42,7 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- move this to lsp, maybe
-vim.keymap.set("n", "<leader>f", function() 
+vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format()
 end)
 
