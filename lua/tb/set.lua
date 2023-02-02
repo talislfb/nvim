@@ -25,7 +25,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 -- search configurations
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.clipboard = 'unnamedplus'
@@ -37,8 +37,20 @@ vim.opt.splitright = true
 -- faster update time
 vim.opt.updatetime = 250
 
+vim.opt.wildignorecase = true
+vim.opt.wildignore:append '**/node_modules/*'
+vim.opt.wildignore:append '**/.git/*'
+
 -- better complete experience
 vim.o.completeopt = 'menuone,noselect'
+
+-- Highlight on yank
+vim.cmd [[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]]
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ' '

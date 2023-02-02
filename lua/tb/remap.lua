@@ -1,7 +1,9 @@
 local opts = { noremap = true, silent = true }
+local expr_opts = { noremap = true, expr = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
-vim.keymap.set("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
+keymap('t', 'jk', '<C-\\><C-n>', opts)
 
 -- normal mode remaps
 -- better window navigation
@@ -58,3 +60,6 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 -- keeps highlighted session while indenting
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- cancel search highlighted with ESC
+keymap('n', '<ESC>', ':nohlsearch<Bar>:echo<CR>', opts)

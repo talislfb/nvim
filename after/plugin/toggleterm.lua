@@ -1,6 +1,6 @@
 local status_ok, toggleterm = pcall(require, 'toggleterm')
 if not status_ok then
-	nvim.notify("Couldn't find toggleterm plugin!")
+	vim.notify("Couldn't find toggleterm plugin!")
 	return
 end
 

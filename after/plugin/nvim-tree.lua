@@ -9,7 +9,7 @@ if not config_status_ok then
 	return
 end
 
-require'nvim-web-devicons'.setup()
+require 'nvim-web-devicons'.setup()
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
