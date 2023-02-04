@@ -79,6 +79,7 @@ packer.startup(function(use)
 	use 'nvim-treesitter/playground'
 
 	use 'simrat39/rust-tools.nvim'
+	use 'cdelledonne/vim-cmake'
 
 	use { -- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
@@ -128,3 +129,5 @@ packer.startup(function(use)
 		return
 	end
 end)
+
+vim.cmd[[let g:cmake_link_compile_commands = 1]]

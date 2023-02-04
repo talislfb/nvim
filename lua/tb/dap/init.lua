@@ -14,7 +14,7 @@ require('nvim-dap-virtual-text').setup()
 require('dap-python').setup('~/.virtualenvs/debugpy/Scripts/python.exe')
 
 -- rust
-require("dap").adapters.lldb = {
+dap.adapters.lldb = {
 	type = "executable",
 	command = "C:/Program Files/LLVM/bin/lldb-vscode.exe", -- adjust as needed
 	name = "lldb",
@@ -37,23 +37,13 @@ local lldb = {
 	runInTerminal = false,
 }
 
-require('dap').configurations.rust = {
+dap.configurations.rust = {
 	lldb -- different debuggers or more configurations can be used here
 }
 
-require('dap').configurations.cpp = {
+dap.configurations.cpp = {
 	lldb
 }
 
 local dapui = require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-end
-
 dapui.setup()

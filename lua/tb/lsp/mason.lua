@@ -4,11 +4,6 @@ if not mason_status_ok then
 	return
 end
 
-local install_root_dir = vim.fn.stdpath "data" .. "/mason"
-local extension_path = install_root_dir .. "/packages/codelldb/extension/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-
 local servers = {
 	"sumneko_lua",
 	"pyright",
@@ -70,23 +65,7 @@ for _, server in pairs(servers) do
 	end
 
 	if server == 'rust_analyzer' then
-		require('rust-tools').setup {
-			tools = {
-				hover_actions = { border = "solid" },
-				on_initialized = function()
-					vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
-						pattern = { "*.rs" },
-						callback = function()
-							vim.lsp.codelens.refresh()
-						end,
-					})
-				end,
-			},
-			server = opts,
-			dap = {
-				adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-			},
-		}
+		require('rust-tools').setup (opts)
 	end
 
 	lspconfig[server].setup(opts)
