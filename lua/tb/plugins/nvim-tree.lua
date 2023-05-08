@@ -1,14 +1,10 @@
 return {
     'nvim-tree/nvim-tree.lua',
-    cmd = 'NvimTreeq',
-    keys = {
-        { '<leader>e', ':NvimTreeToggle<cr>', desc = 'Nvim-tree' },
-    },
     dependencies = {
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
-        local function nv_on_attach(bfnr)
+        local function nv_on_attach(bufnr)
             local api = require('nvim-tree.api')
 
             local function opts(desc)
@@ -37,8 +33,7 @@ return {
             vim.keymap.set('n', 'Z', api.node.run.system, opts('Run System'))
         end
 
-        require("nvim-tree").setup( {
-            on_attach = nv_on_attach
-        })
+        require("nvim-tree").setup({on_attach = nv_on_attach})
+        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
     end
 }
