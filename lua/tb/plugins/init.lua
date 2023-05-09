@@ -2,7 +2,6 @@ return {
   'mbbill/undotree',
 
   -- Git related plugins
-  'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
@@ -68,12 +67,4 @@ opts = {
     return vim.fn.executable 'make' == 1
   end,
 },
-
-{ -- Highlight, edit, and navigate code
-'nvim-treesitter/nvim-treesitter',
-dependencies = {
-  'nvim-treesitter/nvim-treesitter-textobjects',
-},
-build = ":TSUpdate",
-  },
 }

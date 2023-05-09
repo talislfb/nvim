@@ -41,6 +41,8 @@ vim.opt.splitright = true
 
 -- faster update time
 vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
