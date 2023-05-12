@@ -1,71 +1,71 @@
 return {
     {
-        'nvim-telescope/telescope.nvim',
-        dependencies =
-        {
-            'nvim-lua/plenary.nvim'
-        },
-        keys = {
-            {'<leader>?', "<cmd>lua require('telescope.builtin').oldfiles()<cr>", '[?] Find recently opened files'},
-            {'<leader><space>', "<cmd>lua require('telescope.builtin').buffers()<cr>", '[ ] Find existing buffers'},
-            {'<leader>f/', function()
-                require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-                    winblend = 10,
-                    previewer = false,
-                })
-            end, '[f/] Fuzzily search in current buffer'},
-            {'<leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>", '[F]ind [F]iles'},
-            {'<leader>fgf', "<cmd>lua require('telescope.builtin').git_files()<cr>", '[F]ind [G]it [F]iles'},
-            {'<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>", '[F]ind [H]elp'},
-            {'<leader>fw', "<cmd>lua require('telescope.builtin').grep_string()<cr>", '[F]ind current [W]ord'},
-            {'<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", '[F]ind by [G]rep'},
-            {'<leader>fd', "<cmd>lua require('telescope.builtin').live_grep()<cr>", '[F]ind [D]iagnostics'},
-        },
-		config = function()
-			local actions = require('telescope.actions')
+	'nvim-telescope/telescope.nvim',
+	dependencies =
+	    {
+		'nvim-lua/plenary.nvim'
+	    },
+	keys = {
+	    {'<leader>?', "<cmd>lua require('telescope.builtin').oldfiles()<cr>", '[?] Find recently opened files'},
+	    {'<leader><space>', "<cmd>lua require('telescope.builtin').buffers()<cr>", '[ ] Find existing buffers'},
+	    {'<leader>f/', function()
+		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+		    winblend = 10,
+		    previewer = false,
+		})
+	    end, '[f/] Fuzzily search in current buffer'},
+	    {'<leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>", '[F]ind [F]iles'},
+	    {'<leader>fgf', "<cmd>lua require('telescope.builtin').git_files()<cr>", '[F]ind [G]it [F]iles'},
+	    {'<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>", '[F]ind [H]elp'},
+	    {'<leader>fw', "<cmd>lua require('telescope.builtin').grep_string()<cr>", '[F]ind current [W]ord'},
+	    {'<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", '[F]ind by [G]rep'},
+	    {'<leader>fd', "<cmd>lua require('telescope.builtin').live_grep()<cr>", '[F]ind [D]iagnostics'},
+	},
+	config = function()
+	    local actions = require('telescope.actions')
 
-			require('telescope').setup {
-				defaults = {
-					mapping = {
-						i = {
-							["<C-n>"] = actions.cycle_history_next,
-							["<C-p>"] = actions.cycle_history_prev,
+	    require('telescope').setup {
+		defaults = {
+		    mapping = {
+			i = {
+			    ["<C-n>"] = actions.cycle_history_next,
+			    ["<C-p>"] = actions.cycle_history_prev,
 
-							["<C-j>"] = actions.move_selection_next,
-							["<C-k>"] = actions.move_selection_previous,
-						},
-						n = {
-							["j"] = actions.move_selection_next,
-							["k"] = actions.move_selection_previous,
-							["H"] = actions.move_to_top,
-							["M"] = actions.move_to_middle,
-							["L"] = actions.move_to_bottom,
+			    ["<C-j>"] = actions.move_selection_next,
+			    ["<C-k>"] = actions.move_selection_previous,
+			},
+			n = {
+			    ["j"] = actions.move_selection_next,
+			    ["k"] = actions.move_selection_previous,
+			    ["H"] = actions.move_to_top,
+			    ["M"] = actions.move_to_middle,
+			    ["L"] = actions.move_to_bottom,
 
-							["gg"] = actions.move_to_top,
-							["G"] = actions.move_to_bottom,
+			    ["gg"] = actions.move_to_top,
+			    ["G"] = actions.move_to_bottom,
 
-							["<C-u>"] = actions.preview_scrolling_up,
-							["<C-d>"] = actions.preview_scrolling_down,
+			    ["<C-u>"] = actions.preview_scrolling_up,
+			    ["<C-d>"] = actions.preview_scrolling_down,
 
-							["<PageUp>"] = actions.results_scrolling_up,
-							["<PageDown>"] = actions.results_scrolling_down,
+			    ["<PageUp>"] = actions.results_scrolling_up,
+			    ["<PageDown>"] = actions.results_scrolling_down,
 
-							["?"] = actions.which_key,
-						}
-					}
-				}
+			    ["?"] = actions.which_key,
 			}
-		end
+		    }
+		}
+	    }
+	end
     },
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-            return vim.fn.executable 'make' == 1
-        end,
-        config = function()
-            pcall(require('telescope').load_extension, 'fzf')
-        end
+	'nvim-telescope/telescope-fzf-native.nvim',
+	build = 'make',
+	cond = function()
+	    return vim.fn.executable 'make' == 1
+	end,
+	config = function()
+	    pcall(require('telescope').load_extension, 'fzf')
+	end
     },
 }
 

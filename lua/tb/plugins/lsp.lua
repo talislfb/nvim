@@ -18,7 +18,7 @@ return {
             },
             'williamboman/mason-lspconfig.nvim',
             'jose-elias-alvarez/null-ls.nvim',
-            'folke/neodev.nvim',
+            { 'folke/neodev.nvim', opts = {} },
             { 'j-hui/fidget.nvim', opts = {} },
             {
                 'ray-x/lsp_signature.nvim',

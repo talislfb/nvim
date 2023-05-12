@@ -16,7 +16,11 @@ return {
 						enable = true,
 						useParameterNames = true,
 					}
-				}
+				},
+				cmd = {
+					"rustup", "run", "stable" "rust-analyzer",
+					}
+				},
 			},
 			dap = {
 				adapter = {
