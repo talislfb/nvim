@@ -10,7 +10,7 @@ return { -- Highlight, edit, and navigate code
             ensure_installed = { 'vim', "vimdoc", "python", "c", "cpp", "lua", "rust", "toml", 'python' },
             auto_install = false,
 
-	        indent = { enable = true, disable = { 'yaml', 'python', 'css' } },
+            indent = { enable = true, disable = { 'yaml', 'python', 'css' } },
 
             incremental_selection = {
                 enable = true,

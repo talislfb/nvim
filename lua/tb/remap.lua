@@ -51,13 +51,13 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- move this to lsp, maybe
-vim.keymap.set("n", "<leader>f", function()
+vim.keymap.set("n", "<leader>kd", function()
 	vim.lsp.buf.format()
 end)
 
 -- quick fix navigation
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- visual mode
 -- move lines and auto indent
