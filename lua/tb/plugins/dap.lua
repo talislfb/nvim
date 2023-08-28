@@ -17,8 +17,8 @@ return {
     vim.keymap.set('n', '<F7>', dap.step_into)
     vim.keymap.set('n', '<F8>', dap.step_over)
     vim.keymap.set('n', '<S-F7>', dap.step_out)
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
-    vim.keymap.set('n', '<leader>B', function()
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
+    vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end)
 

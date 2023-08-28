@@ -44,7 +44,6 @@ function Plugin.config()
 		},
 		sources = {
 			{ name = 'nvim_lsp_signature_help' },
-			{ name = 'nvim_lsp' },
 			{ name = 'nvim_lua' },
 			{ name = 'nvim_lsp',               keyword_length = 3 },
 			{ name = 'buffer',                 keyword_length = 3 },
@@ -84,8 +83,8 @@ function Plugin.config()
 				c = cmp.mapping.close()
 			},
 
-			['<C-j>'] = cmp.mapping.select_prev_item(select_opts),
-			['<C-k>'] = cmp.mapping.select_next_item(select_opts),
+			['<C-j>'] = cmp.mapping.select_next_item(select_opts),
+			['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
 
 			['<C-Space>'] = cmp.mapping.complete {},
 			['<CR>'] = cmp.mapping.confirm {

@@ -43,7 +43,13 @@ function Plugin.config()
 	})
 
 	require('mason').setup({
-		ui = { border = 'rounded' }
+		ui = { border = 'rounded' },
+		opts = {
+			ensure_installed = {
+
+			"debugpy"
+		}}
+
 	})
 
 	require('mason-lspconfig').setup({
