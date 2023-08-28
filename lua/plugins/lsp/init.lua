@@ -3,7 +3,11 @@ local Plugin = { 'neovim/nvim-lspconfig' }
 local user = {}
 
 Plugin.dependencies = {
-	{ 'j-hui/fidget.nvim' },
+	{
+		'j-hui/fidget.nvim',
+		tag =  'legacy',
+		event = 'LspAttach'
+	},
 	{ 'williamboman/mason.nvim' },
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
@@ -18,12 +22,12 @@ Plugin.dependencies = {
 }
 
 function Plugin.config()
-	print('configured')
 	user.diagnostics()
 	user.handlers()
 
 	local auto_servers = {
-		'nvim_lua'
+		'nvim_lua',
+		'pyright'
 	}
 
 	require('fidget').setup({
@@ -43,16 +47,16 @@ function Plugin.config()
 	})
 
 	require('mason-lspconfig').setup({
-        ensure_installed = {
-            "sumneko_lua",
-            "lua_ls",
-            "rust_analyzer",
-            "taplo", -- toml files
-            "clangd",
-            "cmake",
-        },
-        automatic_installation = true
-    })
+		ensure_installed = {
+			"lua_ls",
+			"rust_analyzer",
+			"taplo", -- toml files
+			"clangd",
+			"cmake",
+			"pyright",
+		},
+		automatic_installation = true
+	})
 
 	vim.api.nvim_create_user_command(
 		'Lsp',
@@ -153,7 +157,7 @@ function user.lsp_attach()
 
 	command(0, 'LspFormat', function()
 		vim.lsp.buf.format({ async = true })
-	end, {})
+		end, {})
 
 	local opts = { silent = true, buffer = true }
 
