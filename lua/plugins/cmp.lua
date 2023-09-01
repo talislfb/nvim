@@ -17,61 +17,73 @@ Plugin.dependencies = {
 Plugin.event = 'InsertEnter'
 
 function Plugin.config()
-	user.augroup = vim.api.nvim_create_augroup('compe_cmds', { clear = true })
-	vim.api.nvim_create_user_command('UserCmpEnable', user.enable_cmd, {})
-
 	local cmp = require('cmp')
 	local luasnip = require('luasnip')
 
 	local select_opts = { behavior = cmp.SelectBehavior.Select }
-	local cmp_enable = cmp.get_config().enabled
+
+	local kind_icons = {
+		Text = "󰉿",
+		Method = "m",
+		Function = "󰊕",
+		Constructor = "",
+		Field = "",
+		Variable = "󰆧",
+		Class = "󰌗",
+		Interface = "",
+		Module = "",
+		Property = "",
+		Unit = "",
+		Value = "󰎠",
+		Enum = "",
+		Keyword = "󰌋",
+		Snippet = "",
+		Color = "󰏘",
+		File = "󰈙",
+		Reference = "",
+		Folder = "󰉋",
+		EnumMember = "",
+		Constant = "󰇽",
+		Struct = "",
+		Event = "",
+		Operator = "󰆕",
+		TypeParameter = "󰊄",
+		Codeium = "󰚩",
+		Copilot = "",
+	}
 
 	user.config = {
-		enabled = function()
-			if user.autocomplete then
-				return cmp_enable()
-			end
-
-			return false
-		end,
-		completion = {
-			completeopt = 'menu,menuone',
-		},
 		snippet = {
 			expand = function(args)
 				luasnip.lsp_expand(args.body)
 			end,
 		},
 		sources = {
+			{ name = 'clangd' },
 			{ name = 'nvim_lsp_signature_help' },
 			{ name = 'nvim_lua' },
 			{ name = 'nvim_lsp',               keyword_length = 3 },
-			{ name = 'buffer',                 keyword_length = 3 },
-			{ name = 'luasnip',                keyword_length = 2 },
+			{ name = 'luasnip',                keyword_length = 3 },
 			{ name = 'path' },
 			{ name = 'buffer' },
 		},
 		window = {
-			documentation = {
-				border = 'rounded',
-				max_height = 15,
-				max_width = 50,
-				zindex = 50,
-			}
+			completion = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered()
 		},
 		formatting = {
-			fields = { 'menu', 'abbr', 'kind' },
-			format = function(entry, item)
-				local menu_icon = {
-					nvim_lsp = 'λ',
-					luasnip = '⋗',
-					buffer = 'Ω',
-					path = '🖫',
-					nvim_lua = 'Π',
-				}
-
-				item.menu = menu_icon[entry.source.name]
-				return item
+			fields = { "kind", "abbr", "menu" },
+			format = function(entry, vim_item)
+				vim_item.kind = kind_icons[vim_item.kind]
+				vim_item.menu = ({
+					nvim_lsp = "",
+					nvim_lua = "",
+					luasnip = "",
+					buffer = "",
+					path = "",
+					emoji = "",
+				})[entry.source.name]
+				return vim_item
 			end,
 		},
 		mapping = {
@@ -128,6 +140,9 @@ function Plugin.config()
 					user.insert_tab()
 				end
 			end, { 'i', 's' }),
+		},
+		experimental = {
+			ghost_text = true
 		}
 	}
 
@@ -189,4 +204,3 @@ function user.insert_tab()
 end
 
 return Plugin
-

@@ -1,6 +1,4 @@
 -- Bind options
-local bind = vim.keymap.set
-local remap = {remap = true}
 local opts = { noremap = true, silent = true }
 
 -- Leader

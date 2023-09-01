@@ -5,7 +5,7 @@ local user = {}
 Plugin.dependencies = {
 	{
 		'j-hui/fidget.nvim',
-		tag =  'legacy',
+		tag = 'legacy',
 		event = 'LspAttach'
 	},
 	{ 'williamboman/mason.nvim' },
@@ -46,9 +46,9 @@ function Plugin.config()
 		ui = { border = 'rounded' },
 		opts = {
 			ensure_installed = {
-
-			"debugpy"
-		}}
+				"debugpy"
+			}
+		}
 
 	})
 
@@ -77,13 +77,11 @@ function Plugin.config()
 	)
 
 	for _, server in pairs(auto_servers) do
-		require('plugins.lsp.servers').start(server,{})
+		require('plugins.lsp.servers').start(server, {})
 	end
 end
 
 function user.diagnostics()
-	local augroup = vim.api.nvim_create_augroup
-	local autocmd = vim.api.nvim_create_autocmd
 
 	local sign = function(opts)
 		vim.fn.sign_define(opts.name, {
@@ -111,24 +109,10 @@ function user.diagnostics()
 			source = 'always',
 			header = '',
 			prefix = '',
+			suffix = ''
 		},
 	})
 
-	local group = augroup('diagnostic_cmds', { clear = true })
-
-	autocmd('ModeChanged', {
-		group = group,
-		pattern = { 'n:i', 'v:s' },
-		desc = 'Disable diagnostics while typing',
-		callback = function() vim.diagnostic.disable(0) end
-	})
-
-	autocmd('ModeChanged', {
-		group = group,
-		pattern = 'i:n',
-		desc = 'Enable diagnostics when leaving insert mode',
-		callback = function() vim.diagnostic.enable(0) end
-	})
 end
 
 function user.handlers()
@@ -163,7 +147,7 @@ function user.lsp_attach()
 
 	command(0, 'LspFormat', function()
 		vim.lsp.buf.format({ async = true })
-		end, {})
+	end, {})
 
 	local opts = { silent = true, buffer = true }
 

@@ -55,6 +55,12 @@ function lsp.tsserver()
 	}
 end
 
+function lsp.rust_analyzer()
+	return {
+		settings = { ['rust-analyzer'] = {}, },
+	}
+end
+
 function M.get(name)
 	local fn = lsp[name]
 	if fn == nil then
