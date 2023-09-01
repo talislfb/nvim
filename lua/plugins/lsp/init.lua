@@ -27,7 +27,8 @@ function Plugin.config()
 
 	local auto_servers = {
 		'nvim_lua',
-		'pyright'
+		'pyright',
+		'clangd'
 	}
 
 	require('fidget').setup({
