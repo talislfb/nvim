@@ -45,14 +45,8 @@ function lsp.nvim_lua()
 	return {}
 end
 
-function lsp.tsserver()
-	return {
-		settings = {
-			completions = {
-				completeFunctionCalls = true
-			}
-		}
-	}
+function lsp.clangd()
+	return require('plugins.lsp.clangd')
 end
 
 function lsp.rust_analyzer()

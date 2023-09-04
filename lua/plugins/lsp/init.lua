@@ -8,7 +8,9 @@ Plugin.dependencies = {
 		tag = 'legacy',
 		event = 'LspAttach'
 	},
-	{ 'williamboman/mason.nvim' },
+	{
+		'williamboman/mason.nvim',
+	},
 	{ 'williamboman/mason-lspconfig.nvim' },
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'folke/neodev.nvim',                opts = {} },
@@ -25,6 +27,7 @@ function Plugin.config()
 	user.diagnostics()
 	user.handlers()
 
+	-- add new config names here to be auto-started
 	local auto_servers = {
 		'nvim_lua',
 		'pyright',
@@ -43,15 +46,7 @@ function Plugin.config()
 		}
 	})
 
-	require('mason').setup({
-		ui = { border = 'rounded' },
-		opts = {
-			ensure_installed = {
-				"debugpy"
-			}
-		}
-
-	})
+	require('mason').setup()
 
 	require('mason-lspconfig').setup({
 		ensure_installed = {
@@ -61,6 +56,8 @@ function Plugin.config()
 			"clangd",
 			"cmake",
 			"pyright",
+			--'codelldb',
+			--'clang-format'
 		},
 		automatic_installation = true
 	})
@@ -83,7 +80,6 @@ function Plugin.config()
 end
 
 function user.diagnostics()
-
 	local sign = function(opts)
 		vim.fn.sign_define(opts.name, {
 			texthl = opts.name,
@@ -113,7 +109,6 @@ function user.diagnostics()
 			suffix = ''
 		},
 	})
-
 end
 
 function user.handlers()
@@ -148,7 +143,7 @@ function user.lsp_attach()
 
 	command(0, 'LspFormat', function()
 		vim.lsp.buf.format({ async = true })
-	end, {})
+		end, {})
 
 	local opts = { silent = true, buffer = true }
 

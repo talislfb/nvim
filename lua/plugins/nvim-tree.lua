@@ -11,6 +11,9 @@ return {
                 return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
             end
 
+            vim.g.loaded_netrw = 1
+            vim.g.loaded_netrwPlugin = 1
+
             api.config.mappings.default_on_attach(bufnr)
 
             vim.keymap.set('n', 'O', '', { buffer = bufnr })
@@ -34,6 +37,6 @@ return {
         end
 
         require("nvim-tree").setup({on_attach = nv_on_attach})
-        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+        vim.keymap.set("n", "<leader>p", ":NvimTreeToggle<CR>")
     end
 }

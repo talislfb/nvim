@@ -6,7 +6,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
 
 vim.keymap.set("i", "jk", "<ESC>", opts)
-vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
+-- disabled netrw (default file browser)
+-- vim.keymap.set("n", "<leader>p", ':30Lexplore<cr>')
 vim.keymap.set("n", "U", "<C-r>")
 
 -- Remap for dealing with word wrap
@@ -32,7 +33,7 @@ vim.keymap.set("n", "<A-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 vim.keymap.set("n", "==", function()
-    vim.lsp.buf.format()
+	vim.lsp.buf.format()
 end)
 
 -- visual mode
@@ -63,8 +64,8 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- quick fix navigation
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", {desc = "Quick Fix: Next issue"})
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", {desc = "Quick Fix: Prev issue"})
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Quick Fix: Next issue" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Quick Fix: Prev issue" })
 
 -- paste over highlighted word, without losing buffer
 vim.keymap.set("x", "p", '"_dP')

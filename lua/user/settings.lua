@@ -2,6 +2,10 @@
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
+-- vim.g.loaded_netrw = 0
+-- vim.g.loaded_netrwPlugin = 0
+-- vim.g.netrw_winsize = 30
+
 -- search configurations
 vim.opt.hlsearch = true
 vim.opt.incsearch = true

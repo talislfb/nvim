@@ -7,11 +7,11 @@ local Plugins = {
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			-- Basic debugging keymaps, feel free to change to your liking!
-			vim.keymap.set('n', '<F5>', dap.continue)
-			vim.keymap.set('n', '<F7>', dap.step_into)
-			vim.keymap.set('n', '<F8>', dap.step_over)
-			vim.keymap.set('n', '<S-F7>', dap.step_out)
+			vim.keymap.set('n', '<leader>dr', dap.continue)
+			vim.keymap.set('n', '<leader>dc', dap.run_to_cursor)
+			vim.keymap.set('n', '<leader>di', dap.step_into)
+			vim.keymap.set('n', '<leader>ds', dap.step_over)
+			vim.keymap.set('n', '<leader>do', dap.step_out)
 			vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
 			vim.keymap.set('n', '<leader>dB', function()
 				dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
@@ -27,6 +27,33 @@ local Plugins = {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close()
 			end
+
+			dap.adapters.codelldb = {
+				type = 'server',
+				command = 'C:\\Users\\talis\\.vscode\\extensions\\vadimcn.vscode-lldb-1.9.2\\adapter\\codelldb.exe',
+				port = 13000,
+				name = 'codelldb'
+			}
+
+			local codelldb = {
+				name = 'Launch file',
+				type = 'codelldb',
+				request = "launch", -- could also attach to a currently running process
+				program = function()
+					return vim.fn.input(
+						"Path to executable: ",
+						vim.fn.getcwd() .. "/",
+						"file"
+					)
+				end,
+				args = {},
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				runInTerminal = false,
+			}
+
+			dap.configurations.cpp = { codelldb }
+			dap.configurations.c = dap.configurations.cpp
 		end
 	},
 	{
@@ -42,7 +69,15 @@ local Plugins = {
 			require('dap-python').setup(path)
 		end
 	},
+	{
+		'jay-babu/mason-nvim-dap.nvim',
+		event = 'VeryLazy',
+		dependencies = {
+			'mfussenegger/nvim-dap',
+			'williamboman/mason.nvim'
+		},
+		handlers = {}
+	}
 }
 
 return Plugins
-
