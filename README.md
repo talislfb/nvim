@@ -57,7 +57,7 @@ I'll keep on improving it's configuration for at least the following languages: 
 
 [catppuccin](https://github.com/catppuccin/catppuccin) - Color theme
 
-[null-ls.nvim](hhttps://github.com/jose-elias-alvarez/null-ls.nvim/tree/main) - **This plugin is no longer in development!** Injects diagnostics and code action to neovim's LSP.
+[null-ls.nvim](hhttps://github.com/jose-elias-alvarez/null-ls.nvim) - **This plugin is no longer in development!** Injects diagnostics and code action to neovim's LSP.
 
 # Requirements
 Run the neovim command `:checkhealth` for a full diagnose and missing dependecies.
