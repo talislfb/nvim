@@ -2,41 +2,41 @@ local M = {}
 local lsp = {}
 
 local function nvim_api()
-	local runtime_path = vim.split(package.path, ';')
-	table.insert(runtime_path, 'lua/?.lua')
-	table.insert(runtime_path, 'lua/?/init.lua')
+	local runtime_path = vim.split(package.path, ";")
+	table.insert(runtime_path, "lua/?.lua")
+	table.insert(runtime_path, "lua/?/init.lua")
 
 	local server_config = {
-		name = 'nvim_lua',
-		cmd = { 'lua-language-server' },
-		filetypes = { 'lua' },
+		name = "nvim_lua",
+		cmd = { "lua-language-server" },
+		filetypes = { "lua" },
 		settings = {
 			Lua = {
 				runtime = {
-					version = 'LuaJIT',
-					path = runtime_path
+					version = "LuaJIT",
+					path = runtime_path,
 				},
 				diagnostics = {
-					globals = { 'vim' }
+					globals = { "vim" },
 				},
 				workspace = {
 					library = {
-						vim.fn.expand('$VIMRUNTIME/lua'),
+						vim.fn.expand("$VIMRUNTIME/lua"),
 					},
-					checkThirdParty = false
+					checkThirdParty = false,
 				},
 				telemetry = {
-					enable = false
+					enable = false,
 				},
-			}
-		}
+			},
+		},
 	}
 
 	return server_config
 end
 
 function lsp.nvim_lua()
-	local configs = require('lspconfig.configs')
+	local configs = require("lspconfig.configs")
 
 	if configs.nvim_lua == nil then
 		configs.nvim_lua = { default_config = nvim_api() }
@@ -46,12 +46,12 @@ function lsp.nvim_lua()
 end
 
 function lsp.clangd()
-	return require('plugins.lsp.clangd')
+	return require("plugins.lsp.clangd")
 end
 
 function lsp.rust_analyzer()
 	return {
-		settings = { ['rust-analyzer'] = {}, },
+		settings = { ["rust-analyzer"] = {} },
 	}
 end
 
@@ -70,18 +70,20 @@ function M.start(name, opts)
 	opts.single_file_support = false
 	opts.capabilities = vim.lsp.protocol.make_client_capabilities()
 	opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
-	opts.capabilities = require('cmp_nvim_lsp').default_capabilities(opts.capabilities)
+	opts.capabilities = require("cmp_nvim_lsp").default_capabilities(opts.capabilities)
 
 	if opts.root_dir == nil then
-		opts.root_dir = function() return vim.fn.getcwd() end
+		opts.root_dir = function()
+			return vim.fn.getcwd()
+		end
 	end
 
 	local defaults = M.get(name)
-	local lspconfig = require('lspconfig')[name]
+	local lspconfig = require("lspconfig")[name]
 
-	lspconfig.setup(vim.tbl_deep_extend('force', defaults, opts))
+	lspconfig.setup(vim.tbl_deep_extend("force", defaults, opts))
 
-	if lsp.manager and vim.bo.filetype ~= '' then
+	if lsp.manager and vim.bo.filetype ~= "" then
 		lsp.manager.try_add_wrapper(vim.api.nvim_get_current_buf())
 	end
 end

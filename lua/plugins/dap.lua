@@ -1,20 +1,20 @@
 local Plugins = {
-	{ 'mfussenegger/nvim-dap' },
+	{ "mfussenegger/nvim-dap" },
 	{
-		'rcarriga/nvim-dap-ui',
-		dependencies = { 'mfussenegger/nvim-dap' },
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap" },
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
 
-			vim.keymap.set('n', '<leader>dr', dap.continue)
-			vim.keymap.set('n', '<leader>dc', dap.run_to_cursor)
-			vim.keymap.set('n', '<leader>di', dap.step_into)
-			vim.keymap.set('n', '<leader>ds', dap.step_over)
-			vim.keymap.set('n', '<leader>do', dap.step_out)
-			vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
-			vim.keymap.set('n', '<leader>dB', function()
-				dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+			vim.keymap.set("n", "<leader>dr", dap.continue)
+			vim.keymap.set("n", "<leader>dc", dap.run_to_cursor)
+			vim.keymap.set("n", "<leader>di", dap.step_into)
+			vim.keymap.set("n", "<leader>ds", dap.step_over)
+			vim.keymap.set("n", "<leader>do", dap.step_out)
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
+			vim.keymap.set("n", "<leader>dB", function()
+				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 			end)
 
 			dapui.setup()
@@ -29,22 +29,18 @@ local Plugins = {
 			end
 
 			dap.adapters.codelldb = {
-				type = 'server',
-				command = 'C:\\Users\\talis\\.vscode\\extensions\\vadimcn.vscode-lldb-1.9.2\\adapter\\codelldb.exe',
+				type = "server",
+				command = "C:\\Users\\talis\\.vscode\\extensions\\vadimcn.vscode-lldb-1.9.2\\adapter\\codelldb.exe",
 				port = 13000,
-				name = 'codelldb'
+				name = "codelldb",
 			}
 
 			local codelldb = {
-				name = 'Launch file',
-				type = 'codelldb',
+				name = "Launch file",
+				type = "codelldb",
 				request = "launch", -- could also attach to a currently running process
 				program = function()
-					return vim.fn.input(
-						"Path to executable: ",
-						vim.fn.getcwd() .. "/",
-						"file"
-					)
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
 				args = {},
 				cwd = "${workspaceFolder}",
@@ -54,30 +50,30 @@ local Plugins = {
 
 			dap.configurations.cpp = { codelldb }
 			dap.configurations.c = dap.configurations.cpp
-		end
+		end,
 	},
 	{
-		'mfussenegger/nvim-dap-python',
-		ft = 'python',
+		"mfussenegger/nvim-dap-python",
+		ft = "python",
 		dependencies = {
-			'mfussenegger/nvim-dap',
-			'rcarriga/nvim-dap-ui'
+			"mfussenegger/nvim-dap",
+			"rcarriga/nvim-dap-ui",
 		},
 		config = function(_, opts)
 			-- path to the script folder with debugpy
-			local path = 'C:\\Users\\talis\\scoop\\apps\\python\\3.11.4\\python'
-			require('dap-python').setup(path)
-		end
+			local path = "C:\\Users\\talis\\scoop\\apps\\python\\3.11.4\\python"
+			require("dap-python").setup(path)
+		end,
 	},
 	{
-		'jay-babu/mason-nvim-dap.nvim',
-		event = 'VeryLazy',
+		"jay-babu/mason-nvim-dap.nvim",
+		event = "VeryLazy",
 		dependencies = {
-			'mfussenegger/nvim-dap',
-			'williamboman/mason.nvim'
+			"mfussenegger/nvim-dap",
+			"williamboman/mason.nvim",
 		},
-		handlers = {}
-	}
+		handlers = {},
+	},
 }
 
 return Plugins

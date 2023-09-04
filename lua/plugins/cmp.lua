@@ -1,24 +1,24 @@
 -- Autocompletion
-local Plugin = { 'hrsh7th/nvim-cmp' }
+local Plugin = { "hrsh7th/nvim-cmp" }
 local user = { autocomplete = true }
 
 Plugin.dependencies = {
 	-- Sources
-	{ 'hrsh7th/cmp-buffer' },
-	{ 'hrsh7th/cmp-path' },
-	{ 'saadparwaiz1/cmp_luasnip' },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/cmp-nvim-lua' },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path" },
+	{ "saadparwaiz1/cmp_luasnip" },
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-nvim-lua" },
 
 	-- Snippets
-	{ 'L3MON4D3/LuaSnip' },
+	{ "L3MON4D3/LuaSnip" },
 }
 
-Plugin.event = 'InsertEnter'
+Plugin.event = "InsertEnter"
 
 function Plugin.config()
-	local cmp = require('cmp')
-	local luasnip = require('luasnip')
+	local cmp = require("cmp")
+	local luasnip = require("luasnip")
 
 	local select_opts = { behavior = cmp.SelectBehavior.Select }
 
@@ -59,17 +59,17 @@ function Plugin.config()
 			end,
 		},
 		sources = {
-			{ name = 'clangd' },
-			{ name = 'nvim_lsp_signature_help' },
-			{ name = 'nvim_lua' },
-			{ name = 'nvim_lsp',               keyword_length = 3 },
-			{ name = 'path' },
-			{ name = 'buffer' },
-			{ name = 'luasnip',                keyword_length = 3 },
+			{ name = "clangd" },
+			{ name = "nvim_lsp_signature_help" },
+			{ name = "nvim_lua" },
+			{ name = "nvim_lsp", keyword_length = 3 },
+			{ name = "path" },
+			{ name = "buffer" },
+			{ name = "luasnip", keyword_length = 3 },
 		},
 		window = {
 			completion = cmp.config.window.bordered(),
-			documentation = cmp.config.window.bordered()
+			documentation = cmp.config.window.bordered(),
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
@@ -87,40 +87,40 @@ function Plugin.config()
 			end,
 		},
 		mapping = {
-			['<C-b>'] = cmp.mapping.scroll_docs(-5),
-			['<C-f>'] = cmp.mapping.scroll_docs(5),
+			["<C-b>"] = cmp.mapping.scroll_docs(-5),
+			["<C-f>"] = cmp.mapping.scroll_docs(5),
 
-			['<C-e>'] = cmp.mapping {
+			["<C-e>"] = cmp.mapping({
 				i = cmp.mapping.abort(),
-				c = cmp.mapping.close()
-			},
+				c = cmp.mapping.close(),
+			}),
 
-			['<C-j>'] = cmp.mapping.select_next_item(select_opts),
-			['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
+			["<C-j>"] = cmp.mapping.select_next_item(select_opts),
+			["<C-k>"] = cmp.mapping.select_prev_item(select_opts),
 
-			['<C-Space>'] = cmp.mapping.complete {},
-			['<CR>'] = cmp.mapping.confirm {
+			["<C-Space>"] = cmp.mapping.complete({}),
+			["<CR>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = true,
-			},
+			}),
 
-			['<C-a>'] = cmp.mapping(function(fallback)
+			["<C-a>"] = cmp.mapping(function(fallback)
 				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				else
 					fallback()
 				end
-			end, { 'i', 's' }),
+			end, { "i", "s" }),
 
-			['<C-d>'] = cmp.mapping(function(fallback)
+			["<C-d>"] = cmp.mapping(function(fallback)
 				if luasnip.jumpable(1) then
 					luasnip.jump(1)
 				else
 					fallback()
 				end
-			end, { 'i', 's' }),
+			end, { "i", "s" }),
 
-			['<Tab>'] = cmp.mapping(function(fallback)
+			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.confirm({ select = true })
 				elseif luasnip.jumpable(1) then
@@ -131,19 +131,19 @@ function Plugin.config()
 					user.set_autocomplete(true)
 					cmp.complete()
 				end
-			end, { 'i', 's' }),
+			end, { "i", "s" }),
 
-			['<S-Tab>'] = cmp.mapping(function()
+			["<S-Tab>"] = cmp.mapping(function()
 				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				else
 					user.insert_tab()
 				end
-			end, { 'i', 's' }),
+			end, { "i", "s" }),
 		},
 		experimental = {
-			ghost_text = true
-		}
+			ghost_text = true,
+		},
 	}
 
 	cmp.setup(user.config)
@@ -158,18 +158,12 @@ function user.set_autocomplete(new_value)
 
 	if new_value == false then
 		-- restore autocomplete in the next word
-		vim.api.nvim_buf_set_keymap(
-			0,
-			'i',
-			'<space>',
-			'<cmd>UserCmpEnable<cr><space>',
-			{ noremap = true }
-		)
+		vim.api.nvim_buf_set_keymap(0, "i", "<space>", "<cmd>UserCmpEnable<cr><space>", { noremap = true })
 
 		-- restore when leaving insert mode
-		vim.api.nvim_create_autocmd('InsertLeave', {
+		vim.api.nvim_create_autocmd("InsertLeave", {
 			group = user.augroup,
-			command = 'UserCmpEnable',
+			command = "UserCmpEnable",
 			once = true,
 		})
 	end
@@ -178,8 +172,8 @@ function user.set_autocomplete(new_value)
 end
 
 function user.check_back_space()
-	local col = vim.fn.col('.') - 1
-	if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+	local col = vim.fn.col(".") - 1
+	if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
 		return true
 	else
 		return false
@@ -191,16 +185,12 @@ function user.enable_cmd()
 		return
 	end
 
-	pcall(vim.api.nvim_buf_del_keymap, 0, 'i', '<Space>')
+	pcall(vim.api.nvim_buf_del_keymap, 0, "i", "<Space>")
 	user.set_autocomplete(true)
 end
 
 function user.insert_tab()
-	vim.api.nvim_feedkeys(
-		vim.api.nvim_replace_termcodes('<Tab>', true, true, true),
-		'n',
-		true
-	)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
 end
 
 return Plugin
