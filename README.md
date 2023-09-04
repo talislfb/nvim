@@ -1,3 +1,4 @@
+<img src="imgs/cpp-dap.png" alt="cpp debugging with dap">
 <h2 align="center">
 Talis' VERY BASIC configuration with Lua
 </h2>
