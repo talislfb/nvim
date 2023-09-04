@@ -13,7 +13,7 @@ Plugin.dependencies = {
 	},
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "folke/neodev.nvim",                opts = {} },
+	{ "folke/neodev.nvim", opts = {} },
 	{
 		"ray-x/lsp_signature.nvim",
 		opts = {
