@@ -20,7 +20,10 @@ vim.opt.listchars = "tab:│ ,trail:·,nbsp:+"
 vim.opt.breakindent = true
 
 -- better complete experience
-vim.o.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect"
+
+-- backspace
+vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- general configurations
 vim.opt.nu = true -- show numbers
@@ -30,9 +33,12 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.mouse = "a"
+vim.opt.list = true
+vim.opt.laststatus = 0
 
 -- Use the pretty colors
 vim.opt.termguicolors = true
+vim.opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 
 -- When opening a window put it right or below the current one
 vim.opt.splitright = true
