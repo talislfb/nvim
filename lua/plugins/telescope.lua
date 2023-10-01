@@ -36,7 +36,7 @@ function Plugin.init()
 			winblend = 10,
 			previewer = false,
 		}))
-	end, { desc = "[f/] Fuzzily search in current buffer" })
+		end, { desc = "[f/] Fuzzily search in current buffer" })
 
 	-- Search in files history
 	bind("n", "<leader>fh", "<cmd>Telescope oldfiles<cr>")

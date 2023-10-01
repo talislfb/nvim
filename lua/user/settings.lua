@@ -26,7 +26,7 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- general configurations
-vim.opt.nu = true -- show numbers
+vim.opt.nu = true    -- show numbers
 vim.opt.relativenumber = true
 vim.opt.wrap = false -- no line wraps
 vim.opt.scrolloff = 8

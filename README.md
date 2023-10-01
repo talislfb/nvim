@@ -1,6 +1,6 @@
 <img src="imgs/cpp-dap.png" alt="cpp debugging with dap">
 <h2 align="center">
-Talis' VERY BASIC configuration with Lua
+Talis' NeoVim VERY BASIC configuration
 </h2>
 
 # Table of Contents
@@ -23,9 +23,9 @@ I'll keep on improving it's configuration for at least the following languages: 
 
 # References
 
+* [Josean Martinez](https://www.youtube.com/@joseanmartinez)'s youtube channel
 * [VonHeikemen](https://github.com/VonHeikemen/dotfiles/tree/master)'s dot files
 * [Chris@Machine](https://www.youtube.com/@chrisatmachine)'s youtbune channel
-* [Josean Martinez](https://www.youtube.com/@joseanmartinez)'s youtube channel
 * [Dreams of Code](https://www.youtube.com/@dreamsofcode/featured)'s youtube channel
 
 # Plugins
@@ -76,6 +76,7 @@ New server configurations can be added to `lua/plugins/lsp/servers.lua` it can b
 This configuration is set to have the ability to debug the following languages:
 * Python
 * C/C++
+
 ## Python
 Python should be simple enough to just run the current file with dap.
 
