@@ -1,79 +1,95 @@
-local Plugins = {
-	{ "mfussenegger/nvim-dap" },
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap" },
-		config = function()
-			local dap = require("dap")
-			local dapui = require("dapui")
+return {
+	"mfussenegger/nvim-dap",
+	dependecies = {
+		"williamboman/mason.nvim"
+	},
+	keys = {
+		{ "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+		{ "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+		{ "<leader>dr", function() require("dap").continue() end, desc = "Continue" },
+		{ "<leader>dR", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
+		{ "<leader>dg", function() require("dap").goto_() end, desc = "Go to line (no execute)" },
+		{ "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
+		{ "<leader>dj", function() require("dap").down() end, desc = "Down" },
+		{ "<leader>du", function() require("dap").up() end, desc = "Up" },
+		{ "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
+		{ "<leader>dS", function() require("dap").step_out() end, desc = "Step Out" },
+		{ "<leader>ds", function() require("dap").step_over() end, desc = "Step Over" },
+		{ "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
+		{ "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
+		{ "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
 
-			vim.keymap.set("n", "<leader>dr", dap.continue)
-			vim.keymap.set("n", "<leader>dc", dap.run_to_cursor)
-			vim.keymap.set("n", "<leader>di", dap.step_into)
-			vim.keymap.set("n", "<leader>ds", dap.step_over)
-			vim.keymap.set("n", "<leader>do", dap.step_out)
-			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
-			vim.keymap.set("n", "<leader>dB", function()
-				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end)
+		{ "<leader>dk", function() require("dapui").eval() end, desc = "Evaluate expression under cursor (DapUi)" },
+	},
+	config = function()
+		local dap = require("dap")
 
-			dapui.setup()
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close()
-			end
-
-			dap.adapters.codelldb = {
-				type = "server",
-				command = "C:\\Users\\talis\\.vscode\\extensions\\vadimcn.vscode-lldb-1.9.2\\adapter\\codelldb.exe",
-				port = 13000,
-				name = "codelldb",
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = vim.fn.expand("$HOME\\.vscode\\extensions\\vadimcn.vscode-lldb-1.10.0\\adapter\\codelldb.exe"),
+				args = { "--port", "${port}" },
+				detached = false
 			}
+		}
 
-			local codelldb = {
+		dap.configurations.cpp = {
+			{
 				name = "Launch file",
 				type = "codelldb",
-				request = "launch", -- could also attach to a currently running process
+				request = "launch",
 				program = function()
 					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 				end,
-				args = {},
 				cwd = "${workspaceFolder}",
-				stopOnEntry = false,
-				runInTerminal = false,
+				stopOnEntry = false
 			}
+		}
 
-			dap.configurations.cpp = { codelldb }
-			dap.configurations.c = dap.configurations.cpp
-		end,
-	},
-	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-		},
-		config = function(_, opts)
-			-- path to the script folder with debugpy
-			local path = "C:\\Users\\talis\\scoop\\apps\\python\\3.11.4\\python"
-			require("dap-python").setup(path)
-		end,
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"williamboman/mason.nvim",
-		},
-		handlers = {},
-	},
+		dap.configurations.c = dap.configurations.cpp
+		dap.configurations.rust = dap.configurations.cpp
+
+		local dapui = require("dapui")
+		dapui.setup()
+
+		dap.listeners.after.event_initialized["dapui_config"] = function()
+			dapui.open({})
+		end
+		dap.listeners.before.event_terminated["dapui_config"] = function()
+			dapui.close({})
+		end
+		dap.listeners.before.event_exited["dapui_config"] = function()
+			dapui.close({})
+		end
+
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = vim.fn.expand("$HOME\\.vscode\\extensions\\vadimcn.vscode-lldb-1.10.0\\adapter\\codelldb.exe"),
+				args = { "--port", "${port}" },
+				detached = false
+			}
+		}
+
+		dap.configurations.cpp = {
+			{
+				name = "Launch file",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false
+			}
+		}
+
+		dap.configurations.c = dap.configurations.cpp
+		dap.configurations.rust = dap.configurations.cpp
+
+		local telescope = require("telescope")
+		telescope.load_extension("dap")
+	end,
 }
-
-return Plugins

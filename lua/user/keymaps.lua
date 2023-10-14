@@ -44,7 +44,7 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 -- window commands
 -- splits
 vim.keymap.set("n", "<leader>ws", ":vsplit<CR>", opts)
-vim.keymap.set("n", "<leader>wh", ":hsplit<CR>", opts)
+vim.keymap.set("n", "<leader>wh", ":split<CR>", opts)
 
 -- append lines without changing cursor position
 vim.keymap.set("n", "J", "mzJ`z")
