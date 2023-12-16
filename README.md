@@ -63,7 +63,7 @@ I'll keep on improving it's configuration for at least the following languages: 
 # Requirements
 Run the neovim command `:checkhealth` for a full diagnose and missing dependecies.
 
-* Python
+* Python 3.11
 * Clangd
 * Codelldb - I'm using the vscode extentsion for simplicity sake
 * Lua
@@ -84,5 +84,5 @@ Python should be simple enough to just run the current file with dap.
 * In order to Debug a c++ project is necessary to compile and generate the debug symbols.
 * Then, **for now**, it's necessary to run the codelldb server (with port=1300)
   * The command for me is:
-  * `C:\\Users\\talis\\.vscode\\extensions\\vadimcn.vscode-lldb-1.9.2\\adapter\\codelldb.exe --port 13000`
+  * `~\\.vscode\\extensions\\vadimcn.vscode-lldb-1.9.2\\adapter\\codelldb.exe --port 13000`
 * Setup your break points and start DAP by selecting the executable file.

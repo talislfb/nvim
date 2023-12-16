@@ -60,9 +60,9 @@ function Plugin.config()
 		},
 		sources = {
 			{ name = "clangd" },
+			{ name = "nvim_lsp" },
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua" },
-			{ name = "nvim_lsp",               keyword_length = 3 },
 			{ name = "buffer" },
 			{ name = "luasnip",                keyword_length = 3 },
 			{ name = "path" },

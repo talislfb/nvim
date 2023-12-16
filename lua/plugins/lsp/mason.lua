@@ -17,6 +17,9 @@ return {
 					package_uninstalled = "✗",
 				},
 			},
+			pip = {
+				upgrade_pip = true
+			}
 		})
 
 		mason_lspconfig.setup({
@@ -34,11 +37,10 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"prettier", -- prettier formatter
-				"stylua",   -- lua formatter
-				"black",    -- python formatter
-				"pylint",   -- python linter
+				"stylua", -- lua formatter
+				"black", -- python formatter
+				"pylint", -- python linter
 			},
 		})
 	end,
 }
-
