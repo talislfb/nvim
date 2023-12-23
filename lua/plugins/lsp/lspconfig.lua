@@ -33,8 +33,7 @@ return {
 			bind("n", "gr", lsp.references, opts)
 			bind("n", "gs", lsp.signature_help, opts)
 			bind("n", "<F2>", lsp.rename, opts)
-			bind("n", "<F4>", lsp.code_action, opts)
-			--  bind('x', '<F4>', lsp.range_code_action, opts)
+			bind("n", "<leader>ca", lsp.code_action, opts)
 
 			bind("n", "gl", vim.diagnostic.open_float, opts)
 			bind("n", "[d", vim.diagnostic.goto_prev, opts)
