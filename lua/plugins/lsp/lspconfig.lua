@@ -14,16 +14,7 @@ return {
 			opts.buffer = bufnr
 			local lsp = vim.lsp.buf
 			local bind = vim.keymap.set
-			local command = vim.api.nvim_buf_create_user_command
 
-			command(0, "LspFormat", function()
-				vim.lsp.buf.format({ async = true })
-			end, {})
-
-			-- set keybinds
-			if vim.fn.mapcheck("==", "n") == "" then
-				bind({ "n", "x" }, "==", "<cmd>LspFormat<cr>", opts)
-			end
 
 			bind("n", "K", lsp.hover, opts)
 			bind("n", "gd", lsp.definition, opts)
