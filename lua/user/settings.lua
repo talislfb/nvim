@@ -2,6 +2,7 @@
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
+-- disable the netrw plugin in case there's another one
 -- vim.g.loaded_netrw = 0
 -- vim.g.loaded_netrwPlugin = 0
 -- vim.g.netrw_winsize = 30
@@ -22,8 +23,8 @@ vim.opt.breakindent = true
 -- better complete experience
 vim.opt.completeopt = "menuone,noselect"
 
--- backspace
-vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+-- allow backspace on indent, end of line or insert mode start position
+vim.opt.backspace = "indent,eol,start"
 
 -- general configurations
 vim.opt.nu = true    -- show numbers
@@ -34,7 +35,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.mouse = "a"
 vim.opt.list = true
-vim.opt.laststatus = 0
 
 -- Use the pretty colors
 vim.opt.termguicolors = true
@@ -52,7 +52,7 @@ vim.opt.signcolumn = "yes"
 
 -- Keep lines below cursor when scrolling
 vim.opt.scrolloff = 10
-vim.opt.sidescrolloff = 5
+vim.opt.sidescrolloff = 10
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -79,4 +79,4 @@ vim.opt.wildignore:append("**/node_modules/*")
 vim.opt.wildignore:append("**/.git/*")
 
 -- TODO (remove): this is here to avoid freeze when pressing K
-vim.o.keywordprg = ":help"
+-- vim.o.keywordprg = ":help"

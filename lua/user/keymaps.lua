@@ -6,8 +6,12 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
 vim.keymap.set("i", "jk", "<ESC>", opts)
+vim.keymap.set("t", "jk", "<C-\\><C-n>", opts)
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
+
 -- disabled netrw (default file browser)
--- vim.keymap.set("n", "<leader>p", ':30Lexplore<cr>')
+vim.keymap.set("n", "<leader>p", ':30Lexplore<cr>')
+
 vim.keymap.set("n", "U", "<C-r>")
 
 -- Remap for dealing with word wrap
@@ -20,6 +24,10 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", opts)
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", opts)
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", opts)
 
 -- navigate buffers
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
@@ -31,6 +39,10 @@ vim.keymap.set("n", "<A-Up>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<A-Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<A-Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+vim.keymap.set("t", "<A-Up>", ":resize +2<CR>", opts)
+vim.keymap.set("t", "<A-Down>", ":resize -2<CR>", opts)
+vim.keymap.set("t", "<A-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("t", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 vim.keymap.set("n", "==", function()
 	vim.lsp.buf.format()
