@@ -9,18 +9,7 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
-			pip = {
-				upgrade_pip = true
-			}
-		})
+		mason.setup({})
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install

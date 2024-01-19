@@ -1,7 +1,33 @@
+-- https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/
+local function highlight_symbol(event)
+	local id = vim.tbl_get(event, "data", "client_id")
+	local client = id and vim.lsp.get_client_by_id(id)
+	if client == nil or not client.supports_method("textDocument/documentHighlight") then
+		return
+	end
+
+	local group = vim.api.nvim_create_augroup("highlight_symbol", { clear = false })
+
+	vim.api.nvim_clear_autocmds({ buffer = event.buf, group = group })
+
+	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+		group = group,
+		buffer = event.buf,
+		callback = vim.lsp.buf.document_highlight,
+	})
+
+	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+		group = group,
+		buffer = event.buf,
+		callback = vim.lsp.buf.clear_references,
+	})
+end
+
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
+		"williamboman/mason.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
@@ -14,7 +40,6 @@ return {
 			opts.buffer = bufnr
 			local lsp = vim.lsp.buf
 			local bind = vim.keymap.set
-
 
 			bind("n", "K", lsp.hover, opts)
 			bind("n", "gd", lsp.definition, opts)
@@ -45,6 +70,11 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			desc = "Setup highlight symbol",
+			callback = highlight_symbol,
+		})
 
 		-- configure python server
 		lspconfig["pyright"].setup({

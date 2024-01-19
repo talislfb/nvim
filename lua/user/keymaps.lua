@@ -10,7 +10,7 @@ vim.keymap.set("t", "jk", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 
 -- disabled netrw (default file browser)
-vim.keymap.set("n", "<leader>p", ':30Lexplore<cr>')
+vim.keymap.set("n", "<leader>p", ":30Lexplore<cr>")
 
 vim.keymap.set("n", "U", "<C-r>")
 

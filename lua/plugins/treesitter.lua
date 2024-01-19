@@ -45,8 +45,8 @@ return {
 						init_selection = "<Leader>ss",
 						node_incremental = "<Leader>ss",
 						scope_incremental = "<Leader>sc",
-						node_decremental = "<Leader>sd"
-					}
+						node_decremental = "<Leader>sd",
+					},
 				},
 				-- treesitter-textobjects
 				textobjects = {
@@ -62,14 +62,14 @@ return {
 							["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
 						},
 						selection_modes = {
-							['@parameter.outer'] = 'v', -- charwise
-							['@function.outer'] = 'v', -- linewise
-							['@class.outer'] = '<c-v>', -- blockwise
+							["@parameter.outer"] = "v", -- charwise
+							["@function.outer"] = "v", -- linewise
+							["@class.outer"] = "<c-v>", -- blockwise
 						},
 						include_surrounding_whitespace = true,
-					}
-				}
+					},
+				},
 			})
-		end
-	}
+		end,
+	},
 }

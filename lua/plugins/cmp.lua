@@ -64,7 +64,7 @@ function Plugin.config()
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua" },
 			{ name = "buffer" },
-			{ name = "luasnip",                keyword_length = 3 },
+			{ name = "luasnip", keyword_length = 3 },
 			{ name = "path" },
 		},
 		window = {
