@@ -78,6 +78,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- quick fix navigation
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Quick Fix: Next issue" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Quick Fix: Prev issue" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear higlights" })
 
 -- paste over highlighted word, without losing buffer
 vim.keymap.set("x", "p", '"_dP')
