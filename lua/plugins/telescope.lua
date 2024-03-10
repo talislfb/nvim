@@ -22,13 +22,14 @@ function Plugin.init()
 
 	-- Show key bindings list
 	bind("n", "<leader>?", "<cmd>Telescope keymaps<cr>")
+	bind("n", "<leader>fh", "<cmd>Telescope help_tags", { desc = "[F]ind help" })
 
 	-- Find files by name
 	bind("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "[F]ind [F]iles" })
 	bind("n", "<leader>fgf", "<cmd>lua require('telescope.builtin').git_files()<cr>", { desc = "[F]ind [G]it [F]iles" })
 
 	-- Search symbols in buffer
-	bind("n", "<leader>fs", "<cmd>Telescope treesitter<cr>")
+	bind("n", "<leader>fs", "<cmd>Telescope treesitter<cr>", { desc = "[F]ind [S]ymbols"} )
 
 	-- Search buffer lines
 	bind("n", "<leader>f/", function()
@@ -52,11 +53,11 @@ function Plugin.init()
 		"n",
 		"<leader>fr",
 		"<cmd>lua require('telescope.builtin').oldfiles()<cr>",
-		{ desc = "[?] Find recently opened files" }
+		{ desc = "[F]ind [r]ecently opened files" }
 	)
 	bind(
 		"n",
-		"<leader>fgs",
+		"<leader>fw",
 		"<cmd>lua require('telescope.builtin').grep_string()<cr>",
 		{ desc = "[F]ind current [W]ord" }
 	)
@@ -71,29 +72,6 @@ function Plugin.config()
 			mappings = {
 				i = {
 					["<esc>"] = actions.close,
-					["<C-n>"] = actions.cycle_history_next,
-					["<C-p>"] = actions.cycle_history_prev,
-
-					["<C-j>"] = actions.move_selection_next,
-					["<C-k>"] = actions.move_selection_previous,
-				},
-				n = {
-					["j"] = actions.move_selection_next,
-					["k"] = actions.move_selection_previous,
-					["H"] = actions.move_to_top,
-					["M"] = actions.move_to_middle,
-					["L"] = actions.move_to_bottom,
-
-					["gg"] = actions.move_to_top,
-					["G"] = actions.move_to_bottom,
-
-					["<C-u>"] = actions.preview_scrolling_up,
-					["<C-d>"] = actions.preview_scrolling_down,
-
-					["<PageUp>"] = actions.results_scrolling_up,
-					["<PageDown>"] = actions.results_scrolling_down,
-
-					["?"] = actions.which_key,
 				},
 			},
 		},

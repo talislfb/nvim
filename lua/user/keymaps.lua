@@ -10,7 +10,7 @@ vim.keymap.set("t", "jk", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 
 -- disabled netrw (default file browser)
-vim.keymap.set("n", "<leader>p", ":30Lexplore<cr>")
+vim.keymap.set("n", "<leader>p", ":Lexplore<cr>")
 
 vim.keymap.set("n", "U", "<C-r>")
 
@@ -72,8 +72,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostics [E]rror message" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics [Q]uickfix list" })
 
 -- quick fix navigation
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Quick Fix: Next issue" })

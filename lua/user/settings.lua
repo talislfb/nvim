@@ -7,7 +7,12 @@ vim.opt.ignorecase = true
 -- disable the netrw plugin in case there's another one
 -- vim.g.loaded_netrw = 0
 -- vim.g.loaded_netrwPlugin = 0
--- vim.g.netrw_winsize = 30
+
+-- hide netrw banner (Use I to show it temporarely)
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 30
+-- keep current directory and browsing directory synched
+vim.g.netrw_keepdir = 0
 
 -- search configurations
 vim.opt.hlsearch = true

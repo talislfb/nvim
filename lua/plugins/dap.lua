@@ -21,7 +21,22 @@ return {
 		vim.keymap.set("n", "<leader>dK", require("dap.ui.widgets").hover, { desc = "Hover (DapUI)" })
 		vim.keymap.set("n", "<leader>dt", dap.terminate, { desc = "Terminate" })
 
-		dapui.setup()
+		dapui.setup({
+			icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+			controls = {
+				icons = {
+					pause = "⏸",
+					play = "▶",
+					step_into = "⏎",
+					step_over = "⏭",
+					step_out = "⏮",
+					step_back = "b",
+					run_last = "▶▶",
+					terminate = "⏹",
+					disconnect = "⏏",
+				},
+			},
+		})
 
 		dap.adapters.codelldb = {
 			type = "server",
