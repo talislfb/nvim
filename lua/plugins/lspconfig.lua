@@ -103,6 +103,7 @@ return {
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.stdpath("config") .. "/lua"] = true,
+							[vim.fn.expand "${3rd}/love2d/library"] = true,
 						},
 					},
 				},

@@ -22,7 +22,7 @@ function Plugin.init()
 
 	-- Show key bindings list
 	bind("n", "<leader>?", "<cmd>Telescope keymaps<cr>")
-	bind("n", "<leader>fh", "<cmd>Telescope help_tags", { desc = "[F]ind help" })
+	bind("n", "<leader>fh", "<cmd>Telescope help_tags", { desc = "[F]ind [H]elp" })
 
 	-- Find files by name
 	bind("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "[F]ind [F]iles" })
