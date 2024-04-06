@@ -125,48 +125,4 @@ function Plugin.config()
 	cmp.setup(user.config)
 end
 
-function user.set_autocomplete(new_value)
-	local old_value = user.autocomplete
-
-	if new_value == old_value then
-		return
-	end
-
-	if new_value == false then
-		-- restore autocomplete in the next word
-		vim.api.nvim_buf_set_keymap(0, "i", "<space>", "<cmd>UserCmpEnable<cr><space>", { noremap = true })
-
-		-- restore when leaving insert mode
-		vim.api.nvim_create_autocmd("InsertLeave", {
-			group = user.augroup,
-			command = "UserCmpEnable",
-			once = true,
-		})
-	end
-
-	user.autocomplete = new_value
-end
-
-function user.check_back_space()
-	local col = vim.fn.col(".") - 1
-	if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-		return true
-	else
-		return false
-	end
-end
-
-function user.enable_cmd()
-	if user.autocomplete then
-		return
-	end
-
-	pcall(vim.api.nvim_buf_del_keymap, 0, "i", "<Space>")
-	user.set_autocomplete(true)
-end
-
-function user.insert_tab()
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
-end
-
 return Plugin

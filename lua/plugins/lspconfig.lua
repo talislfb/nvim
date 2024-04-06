@@ -88,6 +88,19 @@ return {
 			on_attach = on_attach,
 		})
 
+		lspconfig['rust_analyzer'].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = {'rust'},
+			settings = {
+				['rust_analyzer'] = {
+					cargo = {
+						allFeatures = true,
+					}
+				}
+			}
+		})
+
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,

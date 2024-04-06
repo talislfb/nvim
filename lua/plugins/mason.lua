@@ -29,7 +29,8 @@ return {
 				"stylua", -- lua formatter
 				"black", -- python formatter
 				"pylint", -- python linter
-				"clangd"
+				"clangd",
+				"rust-analyzer"
 			},
 		})
 	end,
