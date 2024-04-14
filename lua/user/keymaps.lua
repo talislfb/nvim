@@ -1,15 +1,14 @@
 -- Bind options
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = false }
 
 -- Leader
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
-vim.keymap.set("i", "jk", "<ESC>", opts)
+vim.keymap.set("i", "jk", "<ESC>", opts, { desc = "Exit insert mode with jk" })
 vim.keymap.set("t", "jk", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 
--- disabled netrw (default file browser)
 vim.keymap.set("n", "<leader>p", ":Lexplore<cr>")
 
 vim.keymap.set("n", "U", "<C-r>")
@@ -29,20 +28,28 @@ vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", opts)
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", opts)
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", opts)
 
+-- window splits management
+vim.keymap.set("n", "<leader>sv", "<C-w>v", opts, { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sw", "<C-w>s", opts, { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>se", "<C-w>=", opts, { desc = "Make splits equal size" })
+vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", opts, { desc = "Close current split" })
+
+-- resize splits
+vim.keymap.set("n", "<leader>sl", ":resize +2<CR>", opts, { desc = "Increase horizontal split size" })
+vim.keymap.set("n", "<leader>sh", ":resize -2<CR>", opts, { desc = "Decrease horizontal split size" })
+vim.keymap.set("n", "<leader>sj", ":vertical resize -2<CR>", opts, { desc = "Decrease vertical split size" })
+vim.keymap.set("n", "<leader>sk", ":vertical resize +2<CR>", opts, { desc = "Increase vertical split size" })
+
+-- tabs management
+vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", opts, { desc = "Open new tab" })
+vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", opts, { desc = "Close current tab" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", opts, { desc = "Go to next tab" })
+vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", opts, { desc = "Go to previous tab" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabnew %<CR>", opts, { desc = "Open current buffer in new tab" })
+
 -- navigate buffers
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
-vim.keymap.set("n", ";q", ":q<CR>", opts)
-
--- resize windows
-vim.keymap.set("n", "<A-Up>", ":resize +2<CR>", opts)
-vim.keymap.set("n", "<A-Down>", ":resize -2<CR>", opts)
-vim.keymap.set("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-vim.keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", opts)
-vim.keymap.set("t", "<A-Up>", ":resize +2<CR>", opts)
-vim.keymap.set("t", "<A-Down>", ":resize -2<CR>", opts)
-vim.keymap.set("t", "<A-Left>", ":vertical resize -2<CR>", opts)
-vim.keymap.set("t", "<A-Right>", ":vertical resize +2<CR>", opts)
 
 vim.keymap.set("n", "==", function()
 	vim.lsp.buf.format()
@@ -52,11 +59,6 @@ end)
 -- move lines and auto indent
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
-
--- window commands
--- splits
-vim.keymap.set("n", "<leader>ws", ":vsplit<CR>", opts)
-vim.keymap.set("n", "<leader>wh", ":split<CR>", opts)
 
 -- append lines without changing cursor position
 vim.keymap.set("n", "J", "mzJ`z")

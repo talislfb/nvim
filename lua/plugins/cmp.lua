@@ -13,6 +13,7 @@ Plugin.dependencies = {
 
 	-- Snippets
 	{ "L3MON4D3/LuaSnip" },
+	{ "onsails/lspkind.nvim" },
 }
 
 Plugin.event = "InsertEnter"
@@ -20,40 +21,14 @@ Plugin.event = "InsertEnter"
 function Plugin.config()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
+	local lspkind = require("lspkind")
 
 	local select_opts = { behavior = cmp.SelectBehavior.Select }
 
-	local kind_icons = {
-		Text = "󰉿",
-		Method = "m",
-		Function = "󰊕",
-		Constructor = "",
-		Field = "",
-		Variable = "󰆧",
-		Class = "󰌗",
-		Interface = "",
-		Module = "",
-		Property = "",
-		Unit = "",
-		Value = "󰎠",
-		Enum = "",
-		Keyword = "󰌋",
-		Snippet = "",
-		Color = "󰏘",
-		File = "󰈙",
-		Reference = "",
-		Folder = "󰉋",
-		EnumMember = "",
-		Constant = "󰇽",
-		Struct = "",
-		Event = "",
-		Operator = "󰆕",
-		TypeParameter = "󰊄",
-		Codeium = "󰚩",
-		Copilot = "",
-	}
-
 	user.config = {
+		completion = {
+			completeopt = "menu,menuone,preview,noselect",
+		},
 		snippet = {
 			expand = function(args)
 				luasnip.lsp_expand(args.body)
@@ -73,23 +48,14 @@ function Plugin.config()
 			documentation = cmp.config.window.bordered(),
 		},
 		formatting = {
-			fields = { "kind", "abbr", "menu" },
-			format = function(entry, vim_item)
-				vim_item.kind = kind_icons[vim_item.kind]
-				vim_item.menu = ({
-					nvim_lsp = "",
-					nvim_lua = "",
-					luasnip = "",
-					buffer = "",
-					path = "",
-					emoji = "",
-				})[entry.source.name]
-				return vim_item
-			end,
+			format = lspkind.cmp_format({
+				maxwidth = 50,
+				ellipsis_char = "..."
+			})
 		},
-		mapping = {
-			["<C-b>"] = cmp.mapping.scroll_docs(-5),
-			["<C-f>"] = cmp.mapping.scroll_docs(5),
+		mapping = cmp.mapping.preset.insert({
+			["<C-b>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
 
 			["<C-e>"] = cmp.mapping({
 				i = cmp.mapping.abort(),
@@ -99,7 +65,7 @@ function Plugin.config()
 			["<C-n>"] = cmp.mapping.select_next_item(select_opts),
 			["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
 
-			["<C-Space>"] = cmp.mapping.complete({}),
+			["<C-Space>"] = cmp.mapping.complete(),
 			["<CR>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = true,
@@ -116,7 +82,7 @@ function Plugin.config()
 					luasnip.jump(-1)
 				end
 			end, { "i", "s" }),
-		},
+		}),
 		experimental = {
 			ghost_text = true,
 		},

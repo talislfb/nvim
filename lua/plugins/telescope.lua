@@ -10,6 +10,7 @@ Plugin.dependencies = {
 			user.build_fzy()
 		end,
 	},
+	{ "nvim-tree/nvim-web-devicons" },
 }
 
 Plugin.cmd = "Telescope"
@@ -39,9 +40,6 @@ function Plugin.init()
 		}))
 	end, { desc = "[f/] Fuzzily search in current buffer" })
 
-	-- Search in files history
-	bind("n", "<leader>fh", "<cmd>Telescope oldfiles<cr>")
-
 	-- Search in active buffers list
 	bind(
 		"n",
@@ -69,9 +67,13 @@ function Plugin.config()
 
 	telescope.setup({
 		defaults = {
+			path_display = { "smart" },
 			mappings = {
 				i = {
 					["<esc>"] = actions.close,
+					["<C-n>"] = actions.move_selection_previous,
+					["<C-p>"] = actions.move_selection_next,
+					["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				},
 			},
 		},

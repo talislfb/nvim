@@ -22,7 +22,7 @@ return {
 					enable_autocmd = false,
 				},
 				autopairs = {
-					enable = true,
+					enable = false,
 				},
 				ensure_installed = {
 					"bash",

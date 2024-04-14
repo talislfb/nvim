@@ -30,7 +30,6 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"clangd",
-				"rust-analyzer"
 			},
 		})
 	end,

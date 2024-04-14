@@ -11,8 +11,9 @@ vim.opt.ignorecase = true
 -- hide netrw banner (Use I to show it temporarely)
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
+vim.g.netrw_liststyle = 3
 -- keep current directory and browsing directory synched
-vim.g.netrw_keepdir = 0
+-- vim.g.netrw_keepdir = 0
 
 -- search configurations
 vim.opt.hlsearch = true
@@ -24,9 +25,10 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = false
 vim.opt.smartindent = true
+vim.opt.autoindent = true
+
 vim.opt.list = true
 vim.opt.listchars = "tab:│ ,trail:·,nbsp:+"
-vim.opt.breakindent = true
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
