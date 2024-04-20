@@ -5,6 +5,7 @@ return {
 		{ "rcarriga/nvim-dap-ui" },
 		{ "nvim-telescope/telescope-dap.nvim" },
 		{ "theHamsta/nvim-dap-virtual-text", opts = {} },
+		"nvim-neotest/nvim-nio"
 	},
 	config = function()
 		local dap = require("dap")
