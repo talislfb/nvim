@@ -19,5 +19,8 @@ return {
 		statusline.section_location = function()
 			return "%2l:%-2v"
 		end
+
+		require("mini.files").setup()
+		vim.keymap.set("n", "<leader>p", require("mini.files").open, {noremap = true, silent = true}, {desc = "Open mini-files" })
 	end,
 }

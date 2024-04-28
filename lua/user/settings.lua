@@ -9,9 +9,9 @@ vim.opt.ignorecase = true
 -- vim.g.loaded_netrwPlugin = 0
 
 -- hide netrw banner (Use I to show it temporarely)
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 30
-vim.g.netrw_liststyle = 3
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_winsize = 30
+-- vim.g.netrw_liststyle = 3
 -- keep current directory and browsing directory synched
 -- vim.g.netrw_keepdir = 0
 

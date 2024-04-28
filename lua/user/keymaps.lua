@@ -9,7 +9,7 @@ vim.keymap.set("i", "jk", "<ESC>", opts, { desc = "Exit insert mode with jk" })
 vim.keymap.set("t", "jk", "<C-\\><C-n>", opts)
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", opts)
 
-vim.keymap.set("n", "<leader>p", ":Lexplore<cr>")
+-- vim.keymap.set("n", "<leader>p", ":Lexplore<cr>") -- when using netrw
 
 vim.keymap.set("n", "U", "<C-r>")
 
