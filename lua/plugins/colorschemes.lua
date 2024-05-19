@@ -11,7 +11,7 @@ return { -- tokyonight
 		lazy = false,
 		name = "catppuccin",
 		config = function()
-			vim.cmd.colorscheme("catppuccin")
+			--vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }

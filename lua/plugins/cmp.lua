@@ -66,8 +66,8 @@ function Plugin.config()
 			["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
 
 			["<C-Space>"] = cmp.mapping.complete(),
-			["<CR>"] = cmp.mapping.confirm({
-				behavior = cmp.ConfirmBehavior.Replace,
+			["<C-y>"] = cmp.mapping.confirm({
+				behavior = cmp.ConfirmBehavior.Insert,
 				select = true,
 			}),
 
