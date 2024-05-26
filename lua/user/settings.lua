@@ -28,7 +28,7 @@ vim.opt.smartindent = true
 vim.opt.autoindent = true
 
 vim.opt.list = true
-vim.opt.listchars = "tab:│ ,trail:·,nbsp:+"
+vim.opt.listchars = { tab = '│ ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"

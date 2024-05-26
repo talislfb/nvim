@@ -56,10 +56,6 @@ return {
 			bind("n", "gl", vim.diagnostic.open_float, opts)
 			bind("n", "[d", vim.diagnostic.goto_prev, opts)
 			bind("n", "]d", vim.diagnostic.goto_next, opts)
-
-			local telescope = require("telescope")
-			bind("n", "<leader>fd", telescope.lsp_document_symbols, opts)
-			bind("n", "<leader>fq", telescope.lsp_workspace_symbols, opts)
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)

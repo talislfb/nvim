@@ -3,15 +3,19 @@ return { -- tokyonight
 		"folke/tokyonight.nvim",
 		lazy = true,
 		opts = {
-			style = "moon",
+			style = "night",
 		},
 	},
 	{
 		"catppuccin/nvim",
-		lazy = false,
+		lazy = true,
 		name = "catppuccin",
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
 		config = function()
-			--vim.cmd.colorscheme("catppuccin")
-		end,
+			vim.cmd.colorscheme("kanagawa-dragon")
+		end
 	},
 }
