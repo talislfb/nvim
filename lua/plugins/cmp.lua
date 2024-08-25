@@ -36,6 +36,7 @@ function Plugin.config()
 		},
 		sources = {
 			{ name = "clangd" },
+			{ name = "rust" },
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua" },
@@ -50,8 +51,8 @@ function Plugin.config()
 		formatting = {
 			format = lspkind.cmp_format({
 				maxwidth = 50,
-				ellipsis_char = "..."
-			})
+				ellipsis_char = "...",
+			}),
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<C-b>"] = cmp.mapping.scroll_docs(-4),

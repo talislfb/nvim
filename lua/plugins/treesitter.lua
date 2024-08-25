@@ -30,6 +30,7 @@ return {
 					"c",
 					"cmake",
 					"cpp",
+					"odin",
 					"lua",
 					"luadoc",
 					"luap",

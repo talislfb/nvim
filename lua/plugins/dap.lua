@@ -4,8 +4,8 @@ return {
 		"williamboman/mason.nvim",
 		{ "rcarriga/nvim-dap-ui" },
 		{ "nvim-telescope/telescope-dap.nvim" },
-		{ "theHamsta/nvim-dap-virtual-text", opts = {} },
-		"nvim-neotest/nvim-nio"
+		{ "theHamsta/nvim-dap-virtual-text",  opts = {} },
+		"nvim-neotest/nvim-nio",
 	},
 	config = function()
 		local dap = require("dap")
@@ -63,9 +63,28 @@ return {
 				stopOnEntry = false,
 			},
 		}
+
+		dap.configurations.odin = dap.configurations.cpp
 		dap.configurations.c = dap.configurations.cpp
 		dap.configurations.rust = dap.configurations.cpp
 
+		--[[dap.configurations.odin = {
+			{
+				name = "Launch",
+				type = "gdb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to exe: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopAtBeginningOfMainSubprogram = false,
+			},
+			{
+				name = "Select and attach to process",
+				type = "gdb",
+				request = "attach",
+				program = function()
+					return vim.fn.input("Path to exe: ", vim.fn.getcwd() .. "/", "file")
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end

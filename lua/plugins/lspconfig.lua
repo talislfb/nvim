@@ -30,8 +30,8 @@ return {
 		"williamboman/mason.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "j-hui/fidget.nvim", opts = {} },
-		{ "folke/neodev.nvim", opts = {} },
+		{ "j-hui/fidget.nvim",                   opts = {} },
+		{ "folke/neodev.nvim",                   opts = {} },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -85,12 +85,17 @@ return {
 			on_attach = on_attach,
 		})
 
-		lspconfig['rust_analyzer'].setup({
+		lspconfig["ols"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lspconfig["rust_analyzer"].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
-			filetypes = {'rust'},
+			filetypes = { "rust" },
 			settings = {
-				['rust_analyzer'] = {
+				["rust_analyzer"] = {
 					procMacro = { enable = true },
 					checkOnSave = {
 						command = "clippy",
@@ -98,9 +103,9 @@ return {
 					},
 					cargo = {
 						allFeatures = true,
-					}
-				}
-			}
+					},
+				},
+			},
 		})
 
 		-- configure lua server (with special settings)
@@ -118,7 +123,7 @@ return {
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.stdpath("config") .. "/lua"] = true,
-							[vim.fn.expand "${3rd}/love2d/library"] = true,
+							[vim.fn.expand("${3rd}/love2d/library")] = true,
 						},
 					},
 				},
