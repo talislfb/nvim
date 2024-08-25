@@ -98,9 +98,6 @@ return {
 			dapui.close({})
 		end
 
-		dap.configurations.c = dap.configurations.cpp
-		dap.configurations.rust = dap.configurations.cpp
-
 		local telescope = require("telescope")
 		telescope.load_extension("dap")
 	end,
