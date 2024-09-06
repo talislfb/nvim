@@ -39,17 +39,25 @@ return {
 			},
 		})
 
-		dap.adapters.codelldb = {
-			type = "server",
-			port = "${port}",
-			executable = {
-				command = vim.fn.expand(
-					"$HOME\\.vscode\\extensions\\vadimcn.vscode-lldb-1.10.0\\adapter\\codelldb.exe"
-				),
-				args = { "--port", "${port}" },
-				detached = false,
-			},
-		}
+		if vim.loop.os_uname().sysname == "Linux" then
+			dap.adapters.codelldb = {
+				type = "executable",
+				command = "lldb-dap",
+				name = "lldb",
+			}
+		else
+			dap.adapters.codelldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = vim.fn.expand(
+						"$HOME\\.vscode\\extensions\\vadimcn.vscode-lldb-1.10.0\\adapter\\codelldb.exe"
+					),
+					args = { "--port", "${port}" },
+					detached = false,
+				},
+			}
+		end
 
 		dap.configurations.cpp = {
 			{
@@ -85,6 +93,25 @@ return {
 				request = "attach",
 				program = function()
 					return vim.fn.input("Path to exe: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				pid = function()
+					local name = vim.fn.input("Executable name (filter): ")
+					return require("dap.utils").pick_process({ filter = name })
+				end,
+				cwd = "{$workspaceFolder}",
+			},
+			{
+				name = "attach to gdbserver :1234",
+				type = "gdb",
+				request = "attach",
+				target = "localhost:1234",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+			},
+		}--]]
+
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
