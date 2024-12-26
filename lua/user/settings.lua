@@ -28,7 +28,7 @@ vim.opt.smartindent = true
 vim.opt.autoindent = true
 
 vim.opt.list = true
-vim.opt.listchars = { tab = '│ ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "│ ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -72,11 +72,11 @@ vim.opt.sidescrolloff = 10
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+  desc = "Highlight when yanking (copying) text",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
 })
 
 -- Set grep default grep command with ripgrep
@@ -91,6 +91,3 @@ vim.opt.timeoutlen = 300
 vim.opt.shortmess:append("c")
 vim.opt.wildignore:append("**/node_modules/*")
 vim.opt.wildignore:append("**/.git/*")
-
--- TODO (remove): this is here to avoid freeze when pressing K
--- vim.o.keywordprg = ":help"
