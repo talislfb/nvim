@@ -56,7 +56,7 @@ vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
 vim.keymap.set("n", "==", function()
-	vim.lsp.buf.format()
+  vim.lsp.buf.format()
 end)
 
 -- visual mode
@@ -88,3 +88,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear higlights" }
 
 -- paste over highlighted word, without losing buffer
 vim.keymap.set("x", "p", '"_dP')
+
+-- keymaps for personal plugin (tbb) defined in the plugin folder
+vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>TBBTerminal<CR>")
+--vim.keymap.set({ "n", "t" }, "<leader>tb", "<cmd>TBBBuild<CR>")
+--vim.keymap.set({ "n", "t" }, "<leader>tr", "<cmd>TBBTaskRun<CR>")
