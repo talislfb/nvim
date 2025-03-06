@@ -1,7 +1,6 @@
 local Plugins = {
-	"mbbill/undotree",
-	{ "nvim-tree/nvim-web-devicons", lazy = true, opts = {} },
-	{ "ap/vim-css-color", lazy = true },
+  "mbbill/undotree",
+  { "ap/vim-css-color", lazy = true },
 }
 
 return Plugins

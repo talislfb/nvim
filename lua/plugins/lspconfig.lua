@@ -30,8 +30,8 @@ return {
     "williamboman/mason.nvim",
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
-    { "j-hui/fidget.nvim",                   opts = {} },
-    { "folke/neodev.nvim",                   opts = {} },
+    { "j-hui/fidget.nvim", opts = {} },
+    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     local lspconfig = require("lspconfig")

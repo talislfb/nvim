@@ -5,7 +5,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzy-native.nvim", build = "make" },
-      { "nvim-tree/nvim-web-devicons" },
+      { "echasnovski/mini.nvim" },
     },
     config = function()
       require("telescope").setup({})
