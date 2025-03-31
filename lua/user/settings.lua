@@ -58,6 +58,7 @@ vim.opt.background = "dark" -- colorschemes that can be light or dark will be ma
 -- When opening a window put it right or below the current one
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.winborder = 'rounded'
 
 -- Enable cursorline
 vim.opt.cursorline = true
