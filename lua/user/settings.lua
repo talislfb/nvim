@@ -40,7 +40,7 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.backspace = "indent,eol,start"
 
 -- general configurations
-vim.opt.nu = true -- show numbers
+vim.opt.nu = true    -- show numbers
 vim.opt.relativenumber = true
 vim.opt.wrap = false -- no line wraps
 vim.opt.scrolloff = 8
@@ -74,7 +74,7 @@ vim.opt.sidescrolloff = 10
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
 })

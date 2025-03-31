@@ -16,6 +16,8 @@ Talis' NeoVim VERY BASIC configuration
 
 # My neovim setup
 
+Neovim 0.11+ is required.
+
 **IMPORTANT:** This a windows only configuration (for now) and is set for my own liking and there are still several things that I would to change in the future.
 I'll keep on improving it's configuration for at least the following languages: lua, python and c/c++.
 
@@ -35,8 +37,6 @@ I'll keep on improving it's configuration for at least the following languages: 
 [mason.nvim](https://github.com/williamboman/mason.nvim) - Package manager for LSP servers, DAP servers, linters and more
 
 [nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for neovim
-
-[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - For Neovim's built-in language server client
 
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Auto completion plugin
 
@@ -58,8 +58,6 @@ I'll keep on improving it's configuration for at least the following languages: 
 
 [catppuccin](https://github.com/catppuccin/catppuccin) - Color theme
 
-[null-ls.nvim](hhttps://github.com/jose-elias-alvarez/null-ls.nvim) - **This plugin is no longer in development!** Injects diagnostics and code action to neovim's LSP.
-
 # Requirements
 Run the neovim command `:checkhealth` for a full diagnose and missing dependecies.
 
@@ -68,7 +66,6 @@ Run the neovim command `:checkhealth` for a full diagnose and missing dependecie
 * Codelldb - I'm using the vscode extentsion for simplicity sake
 * Lua
 * Ripgrep for faster
-
 
 # LSP & Debugging
 New server configurations can be added to `lua/plugins/lsp/servers.lua` it can be manually started with the command `:Lsp {server_Name}`. Alternatively, there's a variable `auto_servers` in `lua/plugins/lsp/init.lua` that can be modified with new configuration names to be auto-started.
