@@ -34,7 +34,7 @@ vim.opt.listchars = { tab = "│ ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 -- better complete experience
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = 'noselect,menu,menuone,noinsert,popup'
 
 -- allow backspace on indent, end of line or insert mode start position
 vim.opt.backspace = "indent,eol,start"

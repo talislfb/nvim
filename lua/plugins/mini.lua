@@ -10,15 +10,23 @@ return {
     require("mini.tabline").setup()
     require("mini.starter").setup()
     require("mini.icons").setup()
-    require("mini.statusline").setup({ use_icons = vim.g.have_nerd_font })
 
-    require("mini.files").setup()
-    vim.keymap.set(
-      "n",
-      "<leader>p",
-      require("mini.files").open,
-      { noremap = true, silent = true },
-      { desc = "Open mini-files" }
-    )
+    local statusline = require("mini.statusline")
+    statusline.setup({ use_icons = vim.g.have_nerd_font })
+    statusline.section_location = function()
+      return "%2l:%-2v"
+    end
+
+    require("mini.files").setup({
+      windows = {
+        preview = true,
+        width_preview = 50,
+      },
+    })
+    vim.keymap.set("n", "<leader>p", require("mini.files").open, {
+      desc = "Open mini-files",
+      noremap = true,
+      silent = true,
+    })
   end,
 }

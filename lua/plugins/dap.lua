@@ -3,7 +3,6 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		{ "rcarriga/nvim-dap-ui" },
-		{ "nvim-telescope/telescope-dap.nvim" },
 		{ "theHamsta/nvim-dap-virtual-text",  opts = {} },
 		"nvim-neotest/nvim-nio",
 	},
@@ -125,7 +124,5 @@ return {
 			dapui.close({})
 		end
 
-		local telescope = require("telescope")
-		telescope.load_extension("dap")
 	end,
 }

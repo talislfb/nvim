@@ -16,8 +16,6 @@ Talis' NeoVim VERY BASIC configuration
 
 # My neovim setup
 
-Neovim 0.11+ is required.
-
 **IMPORTANT:** This a windows only configuration (for now) and is set for my own liking and there are still several things that I would to change in the future.
 I'll keep on improving it's configuration for at least the following languages: lua, python and c/c++.
 
@@ -25,6 +23,7 @@ I'll keep on improving it's configuration for at least the following languages: 
 
 # References
 
+* [MrJakob](https://www.youtube.com/@MrJakob)'s youtube channel
 * [Josean Martinez](https://www.youtube.com/@joseanmartinez)'s youtube channel
 * [VonHeikemen](https://github.com/VonHeikemen/dotfiles/tree/master)'s dot files
 * [Chris@Machine](https://www.youtube.com/@chrisatmachine)'s youtbune channel
@@ -32,35 +31,32 @@ I'll keep on improving it's configuration for at least the following languages: 
 
 # Plugins
 
+[blink.cmp](https://github.com/saghen/blink.cmp) - Blink for lsp completion
+
+[conform.nvim](https://github.com/stevearc/conform.nvim) - Conform for code formating
+
+[fzf-lua](https://github.com/ibhagwan/fzf-lua) - For files navigation
+
+[harpoon](https://github.com/ThePrimeagen/harpoon) - For favoriting files and swapping between them
+
 [lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager for Neovim
 
 [mason.nvim](https://github.com/williamboman/mason.nvim) - Package manager for LSP servers, DAP servers, linters and more
 
 [nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for neovim
 
-[nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Auto completion plugin
-
-[LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet Engine for Neovim written in Lua
-
-[nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) - A File Explorer written In Lua
-
-[nvim-autopairs](https://github.com/windwp/nvim-autopairs) - A super powerful autopairs for Neovim
-
 [gitsigns](https://github.com/lewis6991/gitsigns.nvim) - Super fast git decorations implemented purely in lua/teal
 
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer
 
-[nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - A Lua fork of vim-devicons
+[mini.nvim](https://github.com/echasnovski/mini.nvim) - Several modules - icons, status line, file navigation
 
-[nvim-telescope](https://github.com/nvim-telescope/telescope.nvim) - Powerful fuzzy finder for project files, text and more
-
-[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status line written in lua
-
-[catppuccin](https://github.com/catppuccin/catppuccin) - Color theme
+[kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) - Color theme
 
 # Requirements
 Run the neovim command `:checkhealth` for a full diagnose and missing dependecies.
 
+* Neovim 0.11+ is required.
 * Python 3.11
 * Clangd
 * Codelldb - I'm using the vscode extentsion for simplicity sake
