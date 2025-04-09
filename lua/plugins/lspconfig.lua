@@ -111,11 +111,31 @@ return {
         lua_ls = {
           settings = {
             Lua = {
+              diagnostics = {
+                globals = { "vim", "love" },
+              },
               completion = {
                 callSnippet = "Replace",
               },
+              workspace = {
+                -- make language server aware of runtime files
+                library = {
+                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                  [vim.fn.stdpath("config") .. "/lua"] = true,
+                  [vim.fn.expand("${3rd}/love2d/library")] = true,
+                },
+              },
             },
           },
+        },
+        clangd = {
+          root_markers = { "compile_commands.json", "compile_flags.txt" },
+          filetypes = { "c", "cpp" },
+        },
+        ols = {
+          cmd = { "ols", "-strict_style" },
+          root_markers = { "ols.json", "odinfmt.json" },
+          filetypes = { "odin" },
         },
       }
 
