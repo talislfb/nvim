@@ -27,20 +27,19 @@ vim.opt.expandtab = false
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
-vim.opt.list = true
 vim.opt.listchars = { tab = "│ ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
 -- better complete experience
-vim.opt.completeopt = 'noselect,menu,menuone,noinsert,popup'
+vim.opt.completeopt = "noselect,menu,menuone,noinsert,popup"
 
 -- allow backspace on indent, end of line or insert mode start position
 vim.opt.backspace = "indent,eol,start"
 
 -- general configurations
-vim.opt.nu = true    -- show numbers
+vim.opt.nu = true -- show numbers
 vim.opt.relativenumber = true
 vim.opt.wrap = false -- no line wraps
 vim.opt.scrolloff = 8
@@ -58,7 +57,7 @@ vim.opt.background = "dark" -- colorschemes that can be light or dark will be ma
 -- When opening a window put it right or below the current one
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-vim.opt.winborder = 'rounded'
+vim.opt.winborder = "rounded"
 
 -- Enable cursorline
 vim.opt.cursorline = true

@@ -23,6 +23,7 @@ I'll keep on improving it's configuration for at least the following languages: 
 
 # References
 
+* [Adib Hanna](https://www.youtube.com/@adibhanna)'s youtube channel
 * [MrJakob](https://www.youtube.com/@MrJakob)'s youtube channel
 * [Josean Martinez](https://www.youtube.com/@joseanmartinez)'s youtube channel
 * [VonHeikemen](https://github.com/VonHeikemen/dotfiles/tree/master)'s dot files
